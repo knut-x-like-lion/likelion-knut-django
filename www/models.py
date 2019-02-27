@@ -11,3 +11,10 @@ class Maxim(models.Model):
         return '' + self.id.__str__() + ': ' + self.by_who
 
 
+class TypeWrite(models.Model):
+    content = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.content
+
+
