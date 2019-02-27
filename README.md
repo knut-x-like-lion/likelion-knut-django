@@ -6,3 +6,9 @@
 * Commit 및 Push 시 DB 파일은 항상 제외시키며, SECRET_KEY 파일과 함께 비공개 저장소에 백업한다.
 * 만약 SECRET_KEY가 노출되었다면, 빠른 시간 내에 Django Secret Key Generator를 이용해 새 키를 발급받아야 한다.
 * 관리자 사이트 로그인은 반드시 TLS 통신을 통해 시도해야 한다.
+
+
+## 외부 라이브러리 사용 명시
+* [Bootstrap Theme](https://bootstrapmade.com/) - Free Version
+* [objectivehtml/FlipClock](https://github.com/objectivehtml/FlipClock) - MIT License
+* [cobrateam/django-htmlmin](https://github.com/cobrateam/django-htmlmin) - [BSD-2-Clause](https://opensource.org/licenses/bsd-license.php)
