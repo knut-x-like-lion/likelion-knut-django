@@ -1,7 +1,8 @@
-from django.urls import path
-from www import views
+from django.contrib import admin
+from django.urls import path, include
 
-app_name = 'www'
+
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('admin/', admin.site.urls),
+    path('', include('www.urls'), name='index'),
 ]

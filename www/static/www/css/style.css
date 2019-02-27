@@ -1429,8 +1429,7 @@ div#preloader {
   bottom: -30px;
   display: block;
   left: 50%;
-  margin-left: -20px;
-  position: absolute;
+  position: center;
 }
 
 .testimonial-content {
