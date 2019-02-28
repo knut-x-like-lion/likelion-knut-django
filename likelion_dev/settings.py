@@ -114,7 +114,7 @@ USE_L10N = True
 USE_TZ = False
 
 # minify
-HTML_MINIFY = True
+HTML_MINIFY = False
 KEEP_COMMENTS_ON_MINIFYING = False
 
 # Static files (CSS, JavaScript, Images)
