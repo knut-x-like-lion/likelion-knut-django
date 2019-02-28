@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = ')9zo&-edd29h9312_hs6%&u1_jnsq5q)c!1!ki8_xda7os3gs9'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'likelion.dev']
-
 
 # Application definition
 
@@ -48,6 +46,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # other middleware classes
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'likelion_dev.urls'
@@ -71,7 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'likelion_dev.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -81,7 +81,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -101,7 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -115,6 +113,9 @@ USE_L10N = True
 
 USE_TZ = False
 
+# minify
+HTML_MINIFY = True
+KEEP_COMMENTS_ON_MINIFYING = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

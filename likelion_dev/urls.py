@@ -3,6 +3,6 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('root/', admin.site.urls),
     path('', include('www.urls'), name='index'),
 ]
