@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 {% block HeadLibs %}
+    <!-- SEO -->
+    <meta content="" name="keywords">
+    <meta content="" name="description">
     <!-- Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Google Fonts -->
@@ -20,6 +23,8 @@
     <link href="{% static 'www/css/style.css' %}" rel="stylesheet">
     <!-- Responsive Stylesheet File -->
     <link href="{% static 'www/css/responsive.css' %}" rel="stylesheet">
+    <!-- Flipclock -->
+    <link href="{% static 'www/css/flipclock.css' %}" rel="stylesheet">
 
     <!-- =======================================================
       Theme Name: eBusiness
@@ -62,16 +67,16 @@
                             <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a class="page-scroll" href="team.html">About us</a>
+                                        <a class="page-scroll" href="about-us">About us</a>
                                     </li>
                                     <li>
-                                        <a class="page-scroll" href="notice.html">공지사항</a>
+                                        <a class="page-scroll" href="notice">공지사항</a>
                                     </li>
                                     <li>
-                                        <a class="page-scroll" href="FAQ.html">FAQ</a>
+                                        <a class="page-scroll" href="faq">FAQ</a>
                                     </li>
                                     <li>
-                                        <a class="page-scroll" href="guest.html">방명록 남기기</a>
+                                        <a class="page-scroll" href="comments">방명록 남기기</a>
                                     </li>
                                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">바로가기<span
                                             class="caret"></span></a>
@@ -146,6 +151,7 @@
     <!-- JavaScript Libraries -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{% static 'www/lib/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'www/lib/flipclock/flipclock.min.js' %}"></script>
     <script src="{% static 'www/lib/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'www/lib/owlcarousel/owl.carousel.min.js' %}"></script>
     <script src="{% static 'www/lib/venobox/venobox.min.js' %}"></script>
@@ -157,4 +163,5 @@
     <script src="{% static 'www/lib/appear/jquery.appear.js' %}"></script>
     <script src="{% static 'www/lib/isotope/isotope.pkgd.min.js' %}"></script>
     <script src="{% static 'www/js/main.js' %}"></script>
+
 {% endblock JavaScriptLibs %}
