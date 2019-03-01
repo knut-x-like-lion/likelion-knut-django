@@ -30,3 +30,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = '공지사항'
+        verbose_name_plural = '공지사항'
+

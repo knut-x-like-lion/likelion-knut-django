@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import *
+
 
 # Create your views here.
 
@@ -11,7 +12,7 @@ def index(request):
         typewrite_result += "\""
         typewrite_result += i.__str__()
         typewrite_result += "\","
-    typewrite_result = typewrite_result[:typewrite_result.__len__()-1]
+    typewrite_result = typewrite_result[:typewrite_result.__len__() - 1]
 
     return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result})
 
