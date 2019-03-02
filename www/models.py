@@ -32,7 +32,7 @@ class Post(models.Model):
         verbose_name = '공지사항'
         verbose_name_plural = '공지사항'
 
-    title = models.CharField(max_length=20, null=False, blank=False)
+    title = models.CharField(max_length=30, null=False, blank=False)
     summary = models.CharField(max_length=50, null=True, blank=True)
     author = models.CharField(max_length=20, null=False, blank=False, default='운영진')
     date_created = models.DateField(null=False, auto_now=True)

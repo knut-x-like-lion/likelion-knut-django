@@ -121,7 +121,9 @@ KEEP_COMMENTS_ON_MINIFYING = False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/assets/'
+MEDIA_URL = '/contents/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'pub_static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # development static resource
 STATICFILES_DIRS = (
