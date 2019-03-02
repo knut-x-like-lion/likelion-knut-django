@@ -24,7 +24,7 @@ SECRET_KEY = ')9zo&-edd29h9312_hs6%&u1_jnsq5q)c!1!ki8_xda7os3gs9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'likelion.dev']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'likelion-knut.dev']
 
 # Application definition
 
