@@ -1,9 +1,14 @@
 from django.db import models
 
+
 # Create your models here.
 
 
 class Maxim(models.Model):
+    class Meta:
+        verbose_name = '격언'
+        verbose_name_plural = '격언'
+
     content = models.CharField(max_length=500, blank=False)
     by_who = models.CharField(max_length=50, blank=False)
 
@@ -12,6 +17,10 @@ class Maxim(models.Model):
 
 
 class TypeWrite(models.Model):
+    class Meta:
+        verbose_name = '움직이는 글자'
+        verbose_name_plural = '움직이는 글자'
+
     content = models.CharField(max_length=100, blank=False)
 
     def __str__(self):
@@ -19,6 +28,10 @@ class TypeWrite(models.Model):
 
 
 class Post(models.Model):
+    class Meta:
+        verbose_name = '공지사항'
+        verbose_name_plural = '공지사항'
+
     title = models.CharField(max_length=20, null=False, blank=False)
     summary = models.CharField(max_length=50, null=True, blank=True)
     author = models.CharField(max_length=20, null=False, blank=False, default='운영진')
@@ -29,8 +42,3 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-
-    class Meta:
-        verbose_name = '공지사항'
-        verbose_name_plural = '공지사항'
-
