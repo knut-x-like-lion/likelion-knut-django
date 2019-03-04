@@ -72,3 +72,11 @@ class Portfolio(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Tags(models.Model):
+    class Meta:
+        verbose_name = '포트폴리오 태그'
+        verbose_name_plural = '포트폴리오 태그'
+    label = models.CharField(max_length=30, null=False, blank=False)
+    tag_name = models.CharField(max_length=15, null=True, blank=True)
