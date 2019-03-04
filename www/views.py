@@ -32,13 +32,12 @@ def index(request):
         elif request.POST['submit_type'] == "signup":
             if request.POST['password'] == request.POST['password-verify']:
                 try:
-                    user = User.objects.create_user(username=request.POST['username'], email=request.POST['email'], password=request.POST['password'])
+                    User.objects.create_user(username=request.POST['username'], email=request.POST['email'], password=request.POST['password'])
                 except IntegrityError:
                     return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': 'failedSignup'})
                 except ArithmeticError:
                     pass
                 else:
-                    auth.login(request, user)
                     return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': 'successSignup'})
             else:
                 return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': 'notMatchPassword'})
@@ -47,6 +46,8 @@ def index(request):
             return HttpResponseRedirect('/')
         elif request.POST['submit_type'] == "edit_profile":
             try:
+                request.POST['picture']
+
                 instance_user = AdvancedUser.objects.get(user_id=auth.get_user(request).id)
                 form_data = EditProfile(request.POST, request.FILES, instance=instance_user)
                 if form_data.is_valid():

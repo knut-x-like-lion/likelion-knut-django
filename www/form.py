@@ -16,7 +16,7 @@ class BlogPost2(forms.Form):
 class EditProfile(forms.ModelForm):
     class Meta:
         model = AdvancedUser
-        fields = ['nickname', 'message', 'picture', 'link1', 'link2', 'link3']
+        fields = ['nickname', 'message', 'picture', 'background', 'link1', 'link2', 'link3']
         widgets = {
             'nickname': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "닉네임"}),
             'message': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "상태 메시지"}),

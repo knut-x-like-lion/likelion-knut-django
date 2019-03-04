@@ -1,0 +1,162 @@
+{% extends "www/base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}
+    ABOUT US :: KNUT X LIKE LION
+{% endblock title %}
+
+{% block content %}
+
+    <!-- Start Bottom Header -->
+    <div class="header-bg page-area">
+        <div class="home-overly"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="slider-content text-center" style="padding:100px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Header -->
+
+    <!-- Start team Area -->
+    <div id="team" class="our-team-area area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline text-center">
+                        <h2>7기 멤버</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="tile-container">
+
+                        {% for i in members %}
+                            <!-- Start column -->
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="card hovercard">
+                                    {% if i.advanceduser.background %}
+                                        <div class="cardheader"
+                                             style="background-image: url({{ i.advanceduser.background.url }});">
+                                        </div>
+                                    {% else %}
+                                        <div class="cardheader"
+                                             style="background-image: url(https://i2.wp.com/www.dargadgetz.com/wp-content/uploads/2019/02/Minimal-Wallpaper-Gradient-for-Mac-Daniel-Romero-rmrdnl-2.jpg?resize=1209%2C680&ssl=1);">
+                                        </div>
+                                    {% endif %}
+                                    <div class="avatar">
+                                        {% if i.advanceduser.picture %}
+                                            <img alt="" src="{{ i.advanceduser.picture.url }}">
+                                        {% else %}
+                                            <img alt="" src="{% static 'www/img/team/default.png' %}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="info">
+                                        <div class="title">
+                                            <a target="_blank">{{ i.last_name|default_if_none:"" }}{{ i.first_name|default_if_none:"" }}</a>
+                                        </div>
+                                        <div class="desc">{{ i.advanceduser.position|default_if_none:"" }}</div>
+                                        <div class="desc">{{ i.advanceduser.message|default_if_none:"" }}</div>
+                                    </div>
+                                    <div class="bottom">
+                                        {% if i.advanceduser.link1 %}
+                                            <a class="btn btn-primary btn-twitter btn-sm" href="{{ i.advanceduser.link1 }}">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        {% endif %}
+                                        {% if i.advanceduser.link2 %}
+                                            <a class="btn btn-primary btn-twitter btn-sm" href="{{ i.advanceduser.link2 }}">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        {% endif %}
+                                        {% if i.advanceduser.link3 %}
+                                            <a class="btn btn-primary btn-twitter btn-sm" href="{{ i.advanceduser.link3 }}">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End column -->
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start team Area -->
+    <div id="team" class="our-team-area area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline text-center">
+                        <h2>7기 운영진</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="tile-container">
+
+                        {% for i in staff %}
+                            <!-- Start column -->
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="card hovercard">
+                                    {% if i.advanceduser.background %}
+                                        <div class="cardheader"
+                                             style="background-image: url({{ i.advanceduser.background.url }});">
+                                        </div>
+                                    {% else %}
+                                        <div class="cardheader"
+                                             style="background-image: url(https://i2.wp.com/www.dargadgetz.com/wp-content/uploads/2019/02/Minimal-Wallpaper-Gradient-for-Mac-Daniel-Romero-rmrdnl-2.jpg?resize=1209%2C680&ssl=1);">
+                                        </div>
+                                    {% endif %}
+                                    <div class="avatar">
+                                        {% if i.advanceduser.picture %}
+                                            <img alt="" src="{{ i.advanceduser.picture.url }}">
+                                        {% else %}
+                                            <img alt="" src="{% static 'www/img/team/default.png' %}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="info">
+                                        <div class="title">
+                                            <a target="_blank">{{ i.last_name|default_if_none:"" }}{{ i.first_name|default_if_none:"" }}</a>
+                                        </div>
+                                        <div class="desc">{{ i.advanceduser.position|default_if_none:"" }}</div>
+                                        <div class="desc">{{ i.advanceduser.message|default_if_none:"" }}</div>
+                                    </div>
+                                    <div class="bottom">
+                                        {% if i.advanceduser.link1 %}
+                                            <a class="btn btn-primary btn-twitter btn-sm" href="{{ i.advanceduser.link1 }}">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        {% endif %}
+                                        {% if i.advanceduser.link2 %}
+                                            <a class="btn btn-primary btn-twitter btn-sm" href="{{ i.advanceduser.link2 }}">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        {% endif %}
+                                        {% if i.advanceduser.link3 %}
+                                            <a class="btn btn-primary btn-twitter btn-sm" href="{{ i.advanceduser.link3 }}">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End column -->
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

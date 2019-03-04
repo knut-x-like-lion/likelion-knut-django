@@ -8,9 +8,10 @@ from django.contrib.auth.models import User
 
 
 class AdvancedUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=False)
     nickname = models.CharField(max_length=10, null=True, blank=True)
     picture = models.ImageField(upload_to='www/images/profile', null=True, blank=True)
+    background = models.ImageField(upload_to='www/images/profile', null=True, blank=True)
     message = models.CharField(max_length=20, null=True, blank=True)
     link1 = models.URLField(max_length=200, null=True, blank=True)
     link2 = models.URLField(max_length=200, null=True, blank=True)
