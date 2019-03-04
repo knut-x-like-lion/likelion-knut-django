@@ -8,13 +8,13 @@ from django.contrib.auth.models import User
 
 
 class AdvancedUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    nickname = models.CharField(max_length=10)
-    picture = models.ImageField(upload_to='media/www/images/profile')
-    message = models.CharField(max_length=20)
-    link1 = models.URLField(max_length=200)
-    link2 = models.URLField(max_length=200)
-    link3 = models.URLField(max_length=200)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
+    nickname = models.CharField(max_length=10, null=True, blank=True)
+    picture = models.ImageField(upload_to='media/www/images/profile', null=True, blank=True)
+    message = models.CharField(max_length=20, null=True, blank=True)
+    link1 = models.URLField(max_length=200, null=True, blank=True)
+    link2 = models.URLField(max_length=200, null=True, blank=True)
+    link3 = models.URLField(max_length=200, null=True, blank=True)
 
 
 class Maxim(models.Model):

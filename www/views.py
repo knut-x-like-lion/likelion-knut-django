@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist, FieldDoesNotExist
 from django.db import IntegrityError
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
@@ -44,9 +45,34 @@ def index(request):
         elif request.POST['submit_type'] == "logout":
             auth.logout(request)
             return HttpResponseRedirect('/')
+        elif request.POST['submit_type'] == "edit_profile":
+            try:
+                instance_user = AdvancedUser.objects.get(user_id=auth.get_user(request).id)
+                form_data = EditProfile(request.POST, instance=instance_user)
+                if form_data.is_valid():
+                    obj = form_data.save(commit=False)
+                    obj.user = request.user
+                    obj.save()
+                    return HttpResponseRedirect('/')
+                else:
+                    return HttpResponseRedirect('/')
+            except AdvancedUser.DoesNotExist:
+                form_data = EditProfile(request.POST)
+                if form_data.is_valid():
+                    obj = form_data.save(commit=False)
+                    obj.user = request.user
+                    obj.save()
+                    return HttpResponseRedirect('/')
+                else:
+                    return HttpResponseRedirect('/')
         else:
-            pass
+            # todo 알수 없는 오류(오류코드 1)
+            return HttpResponseRedirect('/')
     else:
+        if request.user.is_authenticated:
+            #     old_data = AdvancedUser.objects.get(user_id=auth.get_user(request).id)
+            #     form_data = EditProfile(instance=old_data)
+            return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'profile': EditProfile()})
         return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result})
 
 
