@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static from staticfiles %}
+{% load static %}
 {% block HeadLibs %}
     <!-- SEO -->
     <meta content="" name="keywords">
@@ -186,7 +186,7 @@
                                 <div class="footer-icons">
                                     <ul>
                                         <li>
-                                            <a href="https://github.com/likelionknut/likelion-knut" target="_blank"><i class="fab fa-github"></i></a>
+                                            <a href="https://github.com/likelionknut" target="_blank"><i class="fab fa-github"></i></a>
                                         </li>
                                         <li>
                                             <a href="https://opentutorials.org/course/3663" target="_blank"><i class="fas fa-university"></i></a>
@@ -370,7 +370,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">프로필 편집</h>
+                    <h4>class="modal-title">프로필 편집</h4>
                 </div>
                 <div class="modal-body">
                     {% if user.is_authenticated %}
