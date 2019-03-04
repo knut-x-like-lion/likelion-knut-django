@@ -12,10 +12,10 @@
                     <div class="slider-content text-center" style="padding:100px">
                         <div class="header-bottom">
                             <div class="layer2">
-                                <h1 class="title2">안녕하세요</h1>
+                                <h1 class="title2"></h1>
                             </div>
                             <div class="layer3">
-                                <h2 class="title3">멋쟁이사자처럼 7기 한국교통대학교 운영진입니다.</h2>
+                                <h2 class="title3">{{ post.title }}</h2>
                             </div>
                         </div>
                     </div>
@@ -45,6 +45,10 @@
                                     <div class="entry-content">
                                         {{ post.content|safe }}
                                     </div>
+                                    <p style="margin:20px">
+                                        <img src="{{ post.image.url }}" alt="" width="auto">
+
+                                    </p>
                                 </div>
                             </article>
                             <div class="clear"></div>

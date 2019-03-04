@@ -1,4 +1,6 @@
 from django.db import models
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 # Create your models here.
@@ -38,7 +40,8 @@ class Post(models.Model):
     date_created = models.DateField(null=False, auto_now=True)
     content = models.TextField(max_length=1024, null=True, blank=False)
     html_render = models.BooleanField('HTML 렌더링 (non-safe)')
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    thumbnail = ImageSpecField(source='image', processors=[ResizeToFill(320, 100)], format='JPEG', options={'quality': 90})
 
     def __str__(self):
         return self.title
