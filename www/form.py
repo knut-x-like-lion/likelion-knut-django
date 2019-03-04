@@ -20,7 +20,7 @@ class EditProfile(forms.ModelForm):
         widgets = {
             'nickname': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "닉네임"}),
             'message': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "상태 메시지"}),
-            # 'picture': forms.ImageField(attrs={'class': 'form-control'}),
+            'picture': forms.FileInput(),
             # 'link1': forms.URLField(attrs={'placeholder': "상태 메시지"}),
             # 'link2': forms.URLField(attrs={'placeholder': "상태 메시지"}),
             # 'link3': forms.URLField(attrs={'placeholder': "상태 메시지"}),

@@ -48,7 +48,7 @@ def index(request):
         elif request.POST['submit_type'] == "edit_profile":
             try:
                 instance_user = AdvancedUser.objects.get(user_id=auth.get_user(request).id)
-                form_data = EditProfile(request.POST, instance=instance_user)
+                form_data = EditProfile(request.POST, request.FILES, instance=instance_user)
                 if form_data.is_valid():
                     obj = form_data.save(commit=False)
                     obj.user = request.user

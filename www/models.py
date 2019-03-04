@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 class AdvancedUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
     nickname = models.CharField(max_length=10, null=True, blank=True)
-    picture = models.ImageField(upload_to='media/www/images/profile', null=True, blank=True)
+    picture = models.ImageField(upload_to='www/images/profile', null=True, blank=True)
     message = models.CharField(max_length=20, null=True, blank=True)
     link1 = models.URLField(max_length=200, null=True, blank=True)
     link2 = models.URLField(max_length=200, null=True, blank=True)
@@ -51,7 +51,7 @@ class Post(models.Model):
     date_created = models.DateField(null=False, auto_now=True)
     content = models.TextField(max_length=1024, null=True, blank=False)
     html_render = models.BooleanField('HTML 렌더링 (non-safe)')
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    image = models.ImageField(upload_to='www/images', null=True, blank=True)
     thumbnail = ImageSpecField(source='image', processors=[ResizeToFill(320, 100)], format='JPEG', options={'quality': 90})
 
     def __str__(self):
