@@ -15,6 +15,7 @@
     <link href="{% static 'www/lib/owlcarousel/owl.carousel.css' %}" rel="stylesheet">
     <link href="{% static 'www/lib/owlcarousel/owl.transitions.css' %}" rel="stylesheet">
     <link href="{% static 'www/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="{% static 'www/lib/animate/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'www/lib/venobox/venobox.css' %}" rel="stylesheet">
     <!-- Nivo Slider Theme -->
@@ -185,7 +186,13 @@
                                 <div class="footer-icons">
                                     <ul>
                                         <li>
-                                            <a href="https://facebook.com/likelionKNUT" target="_blank"><i class="fa fa-facebook"></i></a>
+                                            <a href="https://github.com/likelionknut/likelion-knut" target="_blank"><i class="fab fa-github"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opentutorials.org/course/3663" target="_blank"><i class="fas fa-university"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://facebook.com/likelionKNUT" target="_blank"><i class="fab fa-facebook"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -212,14 +219,21 @@
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="footer-content">
                             <div class="footer-head">
-                                <h4>Instagram</h4>
+                                <h4>POWERED BY</h4>
+                                <div class="container">
+                                    <img style="margin: 5px" src="{% static 'images/git.png' %}" alt="" width="50px">
+                                    <img style="margin: 5px" src="{% static 'images/python.png' %}" alt="" width="50px">
+                                    <img style="margin: 5px" src="{% static 'images/django.png' %}" alt="" width="50px">
+                                    <img style="margin: 5px" src="{% static 'images/google.png' %}" alt="" width="50px">
+                                    <img style="margin: 5px" src="{% static 'images/aws.png' %}" alt="" width="50px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <h4>SERVER STATUS</h4>
                                 <div class="flicker-img">
-                                    <a><img src="img/portfolio/1.jpg" alt=""></a>
-                                    <a><img src="img/portfolio/2.jpg" alt=""></a>
-                                    <a><img src="img/portfolio/3.jpg" alt=""></a>
-                                    <a><img src="img/portfolio/4.jpg" alt=""></a>
-                                    <a><img src="img/portfolio/5.jpg" alt=""></a>
-                                    <a><img src="img/portfolio/6.jpg" alt=""></a>
+                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/54.180.98.194.svg?color=yellow&label=Deploy&logo=ubuntu&style=popout-square">
                                 </div>
                             </div>
                         </div>
@@ -310,9 +324,6 @@
                         </div>
                         <div class="form-group">
                             <input type="password" name="password-verify" class="form-control" placeholder="비밀번호 확인" data-msg="비밀번호를 입력하십시오.">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="sign-code" class="form-control" placeholder="운영진으로부터 할당받은 가입 코드" data-msg="가입 코드를 입력하십시오.">
                         </div>
                         <div class="form-group">
                             <input id="register-agree" name="registerAgree" type="checkbox" required="" value="1" data-msg="Your agreement is required" class="checkbox-template">
