@@ -1,9 +1,20 @@
 from django.db import models
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
+from django.contrib.auth.models import User
 
 
 # Create your models here.
+
+
+class AdvancedUser(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nickname = models.CharField(max_length=10)
+    picture = models.ImageField(upload_to='media/www/images/profile')
+    message = models.CharField(max_length=20)
+    link1 = models.URLField(max_length=200)
+    link2 = models.URLField(max_length=200)
+    link3 = models.URLField(max_length=200)
 
 
 class Maxim(models.Model):
