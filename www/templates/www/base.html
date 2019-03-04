@@ -68,19 +68,19 @@
                             <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a class="page-scroll" href="/about-us">ABOUT US</a>
-                                    </li>
-                                    <li>
                                         <a class="page-scroll" href="/post">새 소식</a>
                                     </li>
                                     <li>
-                                        <a class="page-scroll" href="/faq">FAQ</a>
+                                        <a class="page-scroll" href="/team">TEAM</a>
                                     </li>
                                     <li>
                                         <a class="page-scroll" href="/comments">방명록</a>
                                     </li>
                                     <li>
                                         <a class="page-scroll" href="/portfolio">포트폴리오</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="/faq">FAQ</a>
                                     </li>
                                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">바로가기<span
                                             class="caret"></span></a>
@@ -269,13 +269,13 @@
                     <form action="/" method="post">
                         {% csrf_token %}
                         <div class="form-group">
-                            <input type="text" name="username" class="form-control" id="username" placeholder="이름 또는 ID" data-msg="이름 또는 ID를 입력하십시오.">
+                            <input type="text" name="username" class="form-control" placeholder="이름 또는 ID" data-msg="이름 또는 ID를 입력하십시오.">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" class="form-control" id="password" placeholder="비밀번호" data-msg="비밀번호를 입력하십시오.">
+                            <input type="password" name="password" class="form-control" placeholder="비밀번호" data-msg="비밀번호를 입력하십시오.">
                         </div>
                         <input type="hidden" name="submit_type" value="login">
-                        <button id="login" type="submit" class="ready-btn" style="margin-top: 0">로그인</button>
+                        <button type="submit" class="ready-btn" style="margin-top: 0">로그인</button>
                     </form>
                     <p>
                     <div><a href="#modal-signup" data-toggle="modal" data-dismiss="modal">아직 회원이 아니신가요?</a></div>
@@ -300,26 +300,26 @@
                     <form action="/" method="post">
                         {% csrf_token %}
                         <div class="form-group">
-                            <input type="text" name="username" class="form-control" id="username" placeholder="로그인에 사용할 이름 또는 ID" data-msg="이름을 입력하십시오.">
+                            <input type="text" name="username" class="form-control" placeholder="로그인에 사용할 이름 또는 ID" data-msg="이름을 입력하십시오.">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" id="email" placeholder="비밀번호 변경에 사용할 E-mail" data-msg="Email 주소를 입력하십시오.">
+                            <input type="email" name="email" class="form-control" placeholder="비밀번호 변경에 사용할 E-mail" data-msg="Email 주소를 입력하십시오.">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" class="form-control" id="password" placeholder="비밀번호" data-msg="비밀번호를 입력하십시오.">
+                            <input type="password" name="password" class="form-control" placeholder="비밀번호" data-msg="비밀번호를 입력하십시오.">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password-verify" class="form-control" id="password-verify" placeholder="비밀번호 확인" data-msg="비밀번호를 입력하십시오.">
+                            <input type="password" name="password-verify" class="form-control" placeholder="비밀번호 확인" data-msg="비밀번호를 입력하십시오.">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="sign-code" class="form-control" id="sign-code" placeholder="운영진으로부터 할당받은 가입 코드" data-msg="가입 코드를 입력하십시오.">
+                            <input type="password" name="sign-code" class="form-control" placeholder="운영진으로부터 할당받은 가입 코드" data-msg="가입 코드를 입력하십시오.">
                         </div>
                         <div class="form-group">
                             <input id="register-agree" name="registerAgree" type="checkbox" required="" value="1" data-msg="Your agreement is required" class="checkbox-template">
                             <label for="register-agree"><a href="" target="tab-eula">이용약관</a> 및 <a href="" target="tab-gdpr">개인정보처리방침</a>을 읽었으며 이에 동의합니다.</label>
                         </div>
                         <input type="hidden" name="submit_type" value="signup">
-                        <button id="login" type="submit" class="ready-btn" style="margin-top: 0">회원가입</button>
+                        <button type="submit" class="ready-btn" style="margin-top: 0">회원가입</button>
                     </form>
                 </div>
                 <div class="modal-footer">
