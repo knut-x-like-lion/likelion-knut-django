@@ -1,0 +1,80 @@
+{% extends "www/base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}
+    Portfolio :: KNUT X LIKE LION
+{% endblock title %}
+
+{% block content %}
+
+    <!-- Start Bottom Header -->
+    <div class="header-bg page-area">
+        <div class="home-overly"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="slider-content text-center" style="padding:100px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Header -->
+
+    <!-- Start portfolio Area -->
+    <div id="portfolio" class="portfolio-area area-padding fix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline text-center">
+                        <h2>포트폴리오</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Start Portfolio -page -->
+                <div class="awesome-project-1 fix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="awesome-menu ">
+                            <ul class="project-menu">
+                                <li>
+                                    <a href="#" class="active" data-filter="*">All</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-filter=".webapp">Web Application</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-filter=".design">Design</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-filter=".git">Git</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="awesome-project-content" style="position: relative; height: 636.05px;">
+                    <!-- single-awesome-project start -->
+                    <div class="col-md-4 col-sm-4 col-xs-12 git" style="position: absolute; left: 390px; top: 318px;">
+                        <div class="single-awesome-project">
+                            <div class="awesome-img">
+                                <a href="#"><img src="img/portfolio/github.jpg" alt=""></a>
+                                <div class="add-actions text-center">
+                                    <div class="project-dec">
+                                        <a href="https://github.com/likelionknut/likelion-knut" target="_blank">
+                                            <h4>GitHub</h4>
+                                            <span>한국교통대학교 멋사 홈페이지를 GitHub Page로 호스팅하고 있습니다.</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single-awesome-project end -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

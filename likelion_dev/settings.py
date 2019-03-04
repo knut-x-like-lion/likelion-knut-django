@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')9zo&-edd29h9312_hs6%&u1_jnsq5q)c!1!ki8_xda7os3gs9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'likelion-knut.dev', 'likelionknut-dev.loopback.kr']
 
@@ -123,14 +123,14 @@ KEEP_COMMENTS_ON_MINIFYING = False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+MEDIA_URL = '/contents/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'pub_static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # development static resource
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    ('www', os.path.join(BASE_DIR, 'static'),),
+    # os.path.join(BASE_DIR, 'static'),
+    # ('www', os.path.join(BASE_DIR, 'static'),),
     # os.path.join(BASE_DIR, 'static'),
     # os.path.join(BASE_DIR, 'static2'),
 )

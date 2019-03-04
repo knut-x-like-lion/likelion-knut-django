@@ -57,3 +57,18 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Portfolio(models.Model):
+    class Meta:
+        verbose_name = '포트폴리오'
+        verbose_name_plural = '포트폴리오'
+    title = models.CharField(max_length=30, null=False, blank=False)
+    content = models.CharField(max_length=50, null=True, blank=True)
+    tags = models.CharField(max_length=50, null=True, blank=True)
+    version = models.CharField(max_length=100, null=True, blank=True)
+    thumbnail = models.ImageField(upload_to='www/portfolio/thumbnail', null=True, blank=True)
+    link1 = models.URLField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
