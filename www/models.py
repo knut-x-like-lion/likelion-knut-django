@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 
 class AdvancedUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nickname = models.CharField(max_length=10, null=True, blank=True)
     picture = models.ImageField(upload_to='www/images/profile', null=True, blank=True)
     background = models.ImageField(upload_to='www/images/profile', null=True, blank=True)
@@ -16,6 +16,10 @@ class AdvancedUser(models.Model):
     link1 = models.URLField(max_length=200, null=True, blank=True)
     link2 = models.URLField(max_length=200, null=True, blank=True)
     link3 = models.URLField(max_length=200, null=True, blank=True)
+
+
+class Members(models.Model):
+    student_id = models.IntegerField()
 
 
 class Maxim(models.Model):
@@ -46,11 +50,11 @@ class Post(models.Model):
         verbose_name = '공지사항'
         verbose_name_plural = '공지사항'
 
-    title = models.CharField(max_length=30, null=False, blank=False)
-    summary = models.CharField(max_length=50, null=True, blank=True)
-    author = models.CharField(max_length=20, null=False, blank=False, default='운영진')
-    date_created = models.DateField(null=False, auto_now=True)
-    content = models.TextField(max_length=1024, null=True, blank=False)
+    title = models.CharField(max_length=30, null=False, blank=False, verbose_name='제목')
+    summary = models.CharField(max_length=50, null=True, blank=True, verbose_name='요약')
+    author = models.CharField(max_length=20, null=False, blank=False, default='운영진', verbose_name='작성자')
+    date_created = models.DateField(auto_now_add=True, verbose_name='작성일')
+    content = models.TextField(max_length=5000, null=True, blank=False, verbose_name='내용')
     html_render = models.BooleanField('HTML 렌더링 (non-safe)')
     image = models.ImageField(upload_to='www/images', null=True, blank=True)
     thumbnail = ImageSpecField(source='image', processors=[ResizeToFill(320, 100)], format='JPEG', options={'quality': 90})

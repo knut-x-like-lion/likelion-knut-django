@@ -21,6 +21,10 @@ class UserAdmin(BaseUserAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
+    search_fields = ['content', 'summary']
+    list_filter = ['author', 'date_created']
+    date_hierarchy = 'date_created'
+    ordering = ['date_created']
     fieldsets = [
         ('공지사항 리스트', {'fields': ['title', 'author', 'summary']}),
         ('공지 내용', {'fields': ['content', 'html_render', 'image']}),

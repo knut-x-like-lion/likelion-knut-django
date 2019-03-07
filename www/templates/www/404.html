@@ -1,0 +1,324 @@
+{% extends "www/base.html" %}
+{% load static %}
+{% block face %}
+    <!-- Start Slider Area -->
+    <div id="home" class="slider-area">
+        <div class="bend niceties preview-2">
+            <div id="ensign-nivoslider" class="slides">
+                <img src="{% static 'www/img/slider/slider1.jpg' %}" alt="" title="#slider-direction-1"/>
+                <img src="{% static 'www/img/slider/slider2.jpg' %}" alt="" title="#slider-direction-2"/>
+                <img src="{% static 'www/img/slider/slider3.jpg' %}" alt="" title="#slider-direction-3"/>
+            </div>
+
+            <!-- direction 1 -->
+            <div id="slider-direction-1" class="slider-direction">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="slider-content">
+                                <!-- layer 1 -->
+                                <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <h2>KNUT X LIKE LION</h2>
+                                </div>
+                                <!-- layer 2 -->
+                                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                                    <h1>멋쟁이 사자처럼 at 한국교통대학교</h1>
+                                </div>
+                                <!-- layer 3 -->
+                                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <a class="ready-btn right-btn page-scroll" href="#big-quote">7기 수강 신청</a>
+                                    <!-- <a type="button" class="ready-btn right-btn page-scroll" data-toggle="modal" data-target="#main-button-0">7기 수강 신청</a>-->
+                                    <a class="ready-btn page-scroll" href="{% url 'www:posts' %}">새로운 소식</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- direction 2 -->
+            <div id="slider-direction-2" class="slider-direction">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="slider-content">
+                                <!-- layer 1 -->
+                                <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <h2>내 아이디어를 내 손으로 직접 실현한다!</h2>
+                                </div>
+                                <!-- layer 2 -->
+                                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                                    <h1>온라인 강의와 오프라인 피드백을 통한<br> 체계적인 프로그래밍 교육</h1>
+                                </div>
+                                <!-- layer 3 -->
+                                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <a class="ready-btn right-btn page-scroll" href="#big-quote">7기 수강 신청</a>
+                                    <a class="ready-btn page-scroll" href="{% url 'www:posts' %}">새로운 소식</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- direction 3 -->
+            <div id="slider-direction-3" class="slider-direction">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="slider-content">
+                                <!-- layer 1 -->
+                                <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <h2>HACK YOUR LIFE</h2>
+                                </div>
+                                <!-- layer 2 -->
+                                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                                    <h1>130여개 학교에서 1,916명의 학생들이<br> 579개의 서비스를 만들었습니다</h1>
+                                </div>
+                                <!-- layer 3 -->
+                                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <a class="ready-btn right-btn page-scroll" href="#big-quote">7기 수강 신청</a>
+                                    <a class="ready-btn page-scroll" href="{% url 'www:posts' %}">새로운 소식</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Slider Area -->
+{% endblock face %}
+
+{% block content %}
+    <!-- Start About area -->
+    <div id="about" class="area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline text-center">
+                        <h2>멋쟁이 사자처럼이 무엇인가요?</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- single-well start-->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="well-left">
+                        <div class="single-well">
+                            <p style="margin-top: 6em">
+                                <img src="{% static 'www/img/about/basiclogo_KE_symbol.png' %}" alt="">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- single-well end-->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="well-middle">
+                        <div class="single-well">
+                            <p>
+                                "<a href="https://likelion.net">멋쟁이 사자처럼</a>"은 비전공자를 대상으로 프로그래밍을 가르치는<br>대학 연합 교육 단체입니다.<br>
+                            </p>
+                            <h4 class="sec-head">멋쟁이 사자처럼의 목표</h4>
+                            <p>
+                                컴퓨터를 모르는 학생들이 프로그래밍 교육을 통해 원하는 IT 서비스를 직접 런칭합니다.
+                                <br>
+                                다양한 오프라인 활동과 병행하여 뜻을 같이하는 동료를 찾고 자신이 만들고자 하는<br>
+                                서비스를 직접 프로그래밍 하도록 돕습니다.
+                            </p>
+                            <ul>
+                                <li>
+                                    <i class="fa fa-check"></i> 최신 기술 스택 활용
+                                </li>
+                                <li>
+                                    <i class="fa fa-check"></i> 해커톤을 통한 아이디어 개발/서비스 구현
+                                </li>
+                                <li>
+                                    <i class="fa fa-check"></i> 자체제작 플랫폼을 통한 개별 학생 관리
+                                </li>
+                                <li>
+                                    <i class="fa fa-check"></i> 학교/팀별 온/오프라인 교육 및 스터디, 세미나
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End col-->
+            </div>
+        </div>
+    </div>
+    <!-- End About area -->
+
+    <!-- Start Service area -->
+    <div id="services" class="services-area area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline services-head text-center">
+                        <h2>우리가 배우는 것들</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="services-contents">
+                    <!-- Start Left services -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="about-move">
+                            <div class="services-details">
+                                <div class="single-services">
+                                    <a class="services-icon">
+                                        <i class="fab fa-html5"></i>
+                                    </a>
+                                    <h4>HTML5/CSS3</h4>
+                                    <p>
+                                        HTML은 웹을 이루는 가장 기초적인 구성 요소입니다.<br>웹페이지의 내용을 서술하고 정의하는 데 사용합니다.<br>CSS는 웹 페이지의 모양과 표현을 서술합니다. - MDN
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- end about-details -->
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="about-move">
+                            <div class="services-details">
+                                <div class="single-services">
+                                    <a class="services-icon">
+                                        <i class="fab fa-python"></i>
+                                    </a>
+                                    <h4>Python</h4>
+                                    <p>
+                                        Python은 가장 배우기 쉬운 프로그래밍 언어 중 하나며,<br>우리는 이 언어를 통해 사용자의 요청에<br>동적으로 응답할 것입니다.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- end about-details -->
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <!-- end col-md-4 -->
+                        <div class=" about-move">
+                            <div class="services-details">
+                                <div class="single-services">
+                                    <a class="services-icon">
+                                        <i class="fas fa-code-branch"></i>
+                                    </a>
+                                    <h4>Git</h4>
+                                    <p>
+                                        Git은 가장 많이 쓰이고 있는<br>버전 관리 도구(Version Control System)입니다.<br>Git을 통한 파일 관리와 백업의 혁신에 대해 배웁니다.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- end about-details -->
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <!-- end col-md-4 -->
+                        <div class=" about-move">
+                            <div class="services-details">
+                                <div class="single-services">
+                                    <a class="services-icon">
+                                        <i class="fa fa-book"></i>
+                                    </a>
+                                    <h4>Django</h4>
+                                    <p>
+                                        Django는 웹 개발 업무를 빠르고 쉽게 진행하도록<br>설계되어웹 프레임워크를 통해 웹 사이트를<br> 체계적이고 깔끔하게 관리할 수 있습니다.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- end about-details -->
+                        </div>
+                    </div>
+                    <!-- End Left services -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <!-- end col-md-4 -->
+                        <div class=" about-move">
+                            <div class="services-details">
+                                <div class="single-services">
+                                    <a class="services-icon">
+                                        <i class="fab fa-js-square"></i>
+                                    </a>
+                                    <h4>JavaScript (예정)</h4>
+                                    <p>
+                                        JavaScript는 웹브라우저에<br>내장된 프로그래밍 언어입니다.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- end about-details -->
+                        </div>
+                    </div>
+                    <!-- End Left services -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <!-- end col-md-4 -->
+                        <div class=" about-move">
+                            <div class="services-details">
+                                <div class="single-services">
+                                    <a class="services-icon">
+                                        <i class="fab fa-aws"></i>
+                                    </a>
+                                    <h4>AWS (미정)</h4>
+                                    <p>
+                                        Amazon Web Services로<br>자신만의 서버를 구축할 수 있어요!
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- end about-details -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Service area -->
+
+    <!-- Start Testimonials -->
+    <div id="big-quote" class="testimonials-area">
+        <div class="testi-inner area-padding">
+            <div class="testi-overly"></div>
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <!-- Start testimonials Start -->
+                        <div class="testimonial-content text-center">
+                            <a class="quate"><i class="fa fa-quote-right"></i></a>
+                            <!-- start testimonial carousel -->
+                            <div class="testimonial-carousel">
+                                {% for maxim in maxim.all %}
+                                    {% if forloop.counter %}
+                                        <!-- Start single item -->
+                                        <div class="single-testi">
+                                            <div class="testi-text">
+                                                <p>
+                                                    {{ maxim.content|safe }}
+                                                </p>
+                                                <h6> - {{ maxim.by_who }} - </h6>
+                                            </div>
+                                        </div>
+                                        <!-- End single item -->
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- End testimonials end -->
+                    </div>
+                    <!-- End Right Feature -->
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
+                        <div class="suscribe-text text-center">
+                            <p class="typewrite writeAndErase" data-period="2000" data-type='[{{ typewrite|safe }}]'>
+                                <span class="wrap"></span>
+                            </p>
+                            <a type="button" class="ready-btn" href="https://apply.likelion.org">지원하기</a>
+                            <!-- <a type="button" class="ready-btn" data-toggle="modal" data-target="#modal-0">지원하기</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Testimonials -->
+
+{% endblock content %}
