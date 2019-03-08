@@ -19,6 +19,7 @@ def index(request):
         typewrite_result += i.__str__()
         typewrite_result += "\","
     typewrite_result = typewrite_result[:typewrite_result.__len__() - 1]
+
     # todo  return render에 flash_data만 인수로 하고 중복 제거
     # todo ajax로 로그인/가입 비밀번호 불일치 처리
     if request.method == "POST":
