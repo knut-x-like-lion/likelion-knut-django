@@ -78,5 +78,25 @@ def index(request):
         return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result})
 
 
-def notice(request):
-    return render(request, 'www/notice.html')
+def posts(request):
+    return render(request, 'www/posts.html', {'posts': Post.objects.order_by('-date_created')})
+
+
+def post(request, post_url):
+    content = Post.objects.get(title=post_url)
+    return render(request, 'www/post.html', {'post': content})
+
+
+def team(request):
+    staff = User.objects.filter(is_staff=True).select_related('advanceduser')
+    User.objects.get(is_staff=True)
+    members = User.objects.filter(is_staff=False)
+    return render(request, 'www/team.html', {'staff': staff, 'members': members})
+
+
+def portfolio(request):
+    return render(request, 'www/portfolio.html')
+
+
+def error404(request):
+    return render(request, 'www/404.html')
