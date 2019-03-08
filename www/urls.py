@@ -19,5 +19,9 @@ from www import views
 app_name = 'www'
 urlpatterns = [
     path('', views.index, name='www'),
-    path('notice/', views.notice, name='notice'),
+    path('404/', views.error404, name='www'),
+    path('team/', views.team, name='team'),
+    path('post/', views.posts, name='posts'),
+    path('post/<post_url>/', views.post, name='post'),
+    path('portfolio', views.portfolio, name='portfolio'),
 ]
