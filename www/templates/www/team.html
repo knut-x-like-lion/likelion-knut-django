@@ -2,7 +2,7 @@
 {% load static from staticfiles %}
 
 {% block title %}
-    ABOUT US :: KNUT X LIKE LION
+    TEAM :: KNUT X LIKE LION
 {% endblock title %}
 
 {% block content %}
@@ -52,7 +52,7 @@
                                         {% if i.advanceduser.picture %}
                                             <img alt="" src="{{ i.advanceduser.picture.url }}">
                                         {% else %}
-                                            <img alt="" src="{% static 'www/img/team/default.png' %}">
+                                            <img alt="" src="{% static 'images/favicon.png' %}">
                                         {% endif %}
                                     </div>
                                     <div class="info">
@@ -121,7 +121,7 @@
                                         {% if i.advanceduser.picture %}
                                             <img alt="" src="{{ i.advanceduser.picture.url }}">
                                         {% else %}
-                                            <img alt="" src="{% static 'www/img/team/default.png' %}">
+                                            <img alt="" src="{% static 'images/favicon.png' %}">
                                         {% endif %}
                                     </div>
                                     <div class="info">
