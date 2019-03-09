@@ -26,7 +26,8 @@ def index(request):
         if request.POST['submit_type'] == "login":
             user = auth.authenticate(request, username=request.POST['username'], password=request.POST['password'])
             if user is not None:
-                auth.login(request, user)
+                if user.is_active:
+                    auth.login(request, user)
                 return HttpResponseRedirect('/')
             else:
                 return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': 'failedLogin'})
@@ -35,13 +36,12 @@ def index(request):
                 try:
                     User.objects.create_user(username=request.POST['username'], email=request.POST['email'], password=request.POST['password'])
                 except IntegrityError:
-                    return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': 'failedSignup'})
-                except ArithmeticError:
-                    pass
+                    flash_data = 'failedSignup'
                 else:
-                    return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': 'successSignup'})
+                    flash_data = 'successSignup'
             else:
-                return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': 'notMatchPassword'})
+                flash_data = 'notMatchPassword'
+            return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': flash_data})
         elif request.POST['submit_type'] == "logout":
             auth.logout(request)
             return HttpResponseRedirect('/')
