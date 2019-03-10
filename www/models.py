@@ -23,7 +23,9 @@ class Member(models.Model):
         verbose_name = '멤버'
         verbose_name_plural = '멤버'
     email = models.EmailField(null=False, blank=False)
-    is_operator = models.BooleanField(null=False, blank=False)
+
+    def __str__(self):
+        return self.email
 
 
 class Maxim(models.Model):

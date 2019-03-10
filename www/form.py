@@ -33,9 +33,9 @@ class EditProfile(forms.ModelForm):
             'message': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "상태 메시지"}),
             'picture': forms.FileInput(),
             'background': forms.FileInput(),
-            'link1': forms.URLInput(attrs={'class': 'form-control', 'placeholder': "링크 1"}),
-            'link2': forms.URLInput(attrs={'class': 'form-control', 'placeholder': "링크 2"}),
-            'link3': forms.URLInput(attrs={'class': 'form-control', 'placeholder': "링크 3"}),
+            'link1': forms.URLInput(attrs={'class': 'form-control', 'placeholder': "블로그 링크"}),
+            'link2': forms.URLInput(attrs={'class': 'form-control', 'placeholder': "Facebook 링크"}),
+            'link3': forms.URLInput(attrs={'class': 'form-control', 'placeholder': "GitHub 링크"}),
         }
         labels = {
             'nickname': '',

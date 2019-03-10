@@ -126,25 +126,25 @@
                                     </div>
                                     <div class="info">
                                         <div class="title">
-                                            <a target="_blank">{{ i.last_name|default_if_none:"" }}{{ i.first_name|default_if_none:"" }}</a>
+                                            <a target="_blank">{{ i.advanceduser.nickname|default_if_none:i.username }}</a>
                                         </div>
-                                        <div class="desc">{{ i.advanceduser.position|default_if_none:"" }}</div>
                                         <div class="desc">{{ i.advanceduser.message|default_if_none:"" }}</div>
                                     </div>
+
                                     <div class="bottom">
                                         {% if i.advanceduser.link1 %}
-                                            <a class="btn btn-primary btn-twitter btn-sm" href="{{ i.advanceduser.link1 }}">
-                                                <i class="fa fa-twitter"></i>
+                                            <a class="btn btn-warning btn-sm" href="{{ i.advanceduser.link1 }}" style="margin: 4px">
+                                                <i class="fas fa-blog"></i>
                                             </a>
                                         {% endif %}
                                         {% if i.advanceduser.link2 %}
-                                            <a class="btn btn-primary btn-twitter btn-sm" href="{{ i.advanceduser.link2 }}">
-                                                <i class="fa fa-twitter"></i>
+                                            <a class="btn btn-info btn-sm" href="{{ i.advanceduser.link2 }}" style="margin: 4px">
+                                                <i class="fab fa-facebook"></i>
                                             </a>
                                         {% endif %}
                                         {% if i.advanceduser.link3 %}
-                                            <a class="btn btn-primary btn-twitter btn-sm" href="{{ i.advanceduser.link3 }}">
-                                                <i class="fa fa-twitter"></i>
+                                            <a class="btn btn-success btn-sm" href="{{ i.advanceduser.link3 }}" style="margin: 4px">
+                                                <i class="fab fa-github"></i>
                                             </a>
                                         {% endif %}
                                     </div>
