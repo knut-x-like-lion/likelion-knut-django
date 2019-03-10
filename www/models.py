@@ -18,8 +18,12 @@ class AdvancedUser(models.Model):
     link3 = models.URLField(max_length=200, null=True, blank=True)
 
 
-class Members(models.Model):
-    student_id = models.IntegerField()
+class Member(models.Model):
+    class Meta:
+        verbose_name = '멤버'
+        verbose_name_plural = '멤버'
+    email = models.EmailField(null=False, blank=False)
+    is_operator = models.BooleanField(null=False, blank=False)
 
 
 class Maxim(models.Model):

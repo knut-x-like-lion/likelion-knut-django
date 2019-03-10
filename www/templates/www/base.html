@@ -74,9 +74,9 @@
                                     <li>
                                         <a class="page-scroll" href="/team">TEAM</a>
                                     </li>
-{#                                    <li>#}
-{#                                        <a class="page-scroll" href="/comments">방명록</a>#}
-{#                                    </li>#}
+                                    {#                                    <li>#}
+                                    {#                                        <a class="page-scroll" href="/comments">방명록</a>#}
+                                    {#                                    </li>#}
                                     <li>
                                         <a class="page-scroll" href="/portfolio">포트폴리오</a>
                                     </li>
@@ -101,6 +101,9 @@
                                             <ul class="dropdown-menu" role="menu">
                                                 <li>
                                                     <a href="#modal-edit-profile" data-toggle="modal">프로필 편집</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#modal-edit-password" data-toggle="modal">비밀번호 변경</a>
                                                 </li>
                                                 <li>
                                                     <form id="form-logout" action="/" method="POST">
@@ -212,7 +215,8 @@
                                     <p><span>Email: </span><a href="mailto:likelionknut@gmail.com">likelionknut@gmail.com</a></p>
                                     <p><span>Working Hours: </span>09:00 - 18:00</p>
                                     <p><span>Location: </span>충청북도 충주시 대학로 50</p>
-                                    <p><span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=UUn5HjOP9jqqwK6Biu8P6Nai1dLyz7qyoY0YIgjqteFGIfmdsdYOR5evFCdi"></script></span></p>
+                                    <p><span id="siteseal"><script async type="text/javascript"
+                                                                   src="https://seal.godaddy.com/getSeal?sealID=UUn5HjOP9jqqwK6Biu8P6Nai1dLyz7qyoY0YIgjqteFGIfmdsdYOR5evFCdi"></script></span></p>
                                 </div>
                             </div>
                         </div>
@@ -235,10 +239,10 @@
                             <div class="footer-head">
                                 <h4>SERVER STATUS</h4>
                                 <div class="flicker-img">
-{#                                    todo 비동기로 받아올 것#}
-{#                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/54.180.98.194.svg?color=yellow&label=Deploy&logo=ubuntu&style=popout-square">#}
-{#                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/52.78.170.250.svg?color=yellow&label=Labs&logo=nginx&style=popout-square">#}
-{#                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/52.78.170.250.svg?color=blue&label=VM&logo=windows&logoColor=00ADEF&style=popout-square">#}
+                                    {#                                    todo 비동기로 받아올 것#}
+                                    {#                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/54.180.98.194.svg?color=yellow&label=Deploy&logo=ubuntu&style=popout-square">#}
+                                    {#                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/52.78.170.250.svg?color=yellow&label=Labs&logo=nginx&style=popout-square">#}
+                                    {#                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/52.78.170.250.svg?color=blue&label=VM&logo=windows&logoColor=00ADEF&style=popout-square">#}
                                 </div>
                             </div>
                         </div>
@@ -256,6 +260,7 @@
                             </p>
                         </div>
                         <div class="credits">
+                            <a href="">개인정보 처리방침</a>&nbsp;&nbsp;&nbsp;&nbsp;
                             <!--
                               All the links in the footer should remain intact.
                               You can delete the links only if you purchased the pro version.
@@ -338,31 +343,6 @@
                         <button type="submit" class="ready-btn" style="margin-top: 0">회원가입</button>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"> X</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Modal -->
-
-    <!-- ResetPasswordModal -->
-    <div class="modal fade" id="modal-reset-password" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">회원가입</h4>
-                </div>
-                <div class="modal-body">
-                    <p>
-                    <div><a href="/" target="_blank">개인정보 처리방침</a></div>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">X</button>
-                </div>
             </div>
         </div>
     </div>
@@ -375,24 +355,75 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4>class="modal-title">프로필 편집</h4>
+                    <h4 class="modal-title">프로필 편집</h4>
                 </div>
                 <div class="modal-body">
                     {% if user.is_authenticated %}
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <p>
-                                {{ profile.as_p }}
+                                {{ profile_form.as_p }}
                             </p>
                             <input type="hidden" name="submit_type" value="edit_profile">
                             <p>
-                                <button id="save-profile" type="submit" class="ready-btn" style="margin-top: 0">저장</button>
+                                <button type="submit" class="ready-btn" style="margin-top: 0">저장</button>
                             </p>
                         </form>
                     {% endif %}
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"> X</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <!-- EditProfileModal -->
+    <div class="modal fade" id="modal-edit-password" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">비밀번호 변경</h4>
+                </div>
+                <div class="modal-body">
+                    {% if user.is_authenticated %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <p>
+                                {{ password_form.as_p }}
+                            </p>
+                            <input type="hidden" name="submit_type" value="edit_password">
+                            <p>
+                                <button type="submit" class="ready-btn" style="margin-top: 0">저장</button>
+                            </p>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <!-- EditProfileModal -->
+    <div class="modal fade" id="modal-reset-password" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">비밀번호 재설정</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <p>
+                            {{ reset_password_form.as_p }}
+                        </p>
+                        <input type="hidden" name="submit_type" value="reset_password">
+                        <p>
+                            <button type="submit" class="ready-btn" style="margin-top: 0">전송</button>
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>

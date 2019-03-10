@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 from www.models import AdvancedUser
-from .models import Post, Maxim, TypeWrite
+from .models import Post, Maxim, TypeWrite, Member
 
 # Register your models here.
 
@@ -35,6 +35,7 @@ class PostAdmin(admin.ModelAdmin):
 
 admin.site.register(Maxim)
 admin.site.register(TypeWrite)
+admin.site.register(Member)
 admin.site.register(Post, PostAdmin)
 # Re-register UserAdmin
 admin.site.unregister(User)

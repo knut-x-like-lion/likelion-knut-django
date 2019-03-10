@@ -48,6 +48,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # custom
+
     # other middleware classes
     'htmlmin.middleware.HtmlMinifyMiddleware',
     'htmlmin.middleware.MarkRequestMiddleware',
@@ -116,6 +119,7 @@ USE_L10N = True
 USE_TZ = False
 
 # minify
+
 HTML_MINIFY = False
 KEEP_COMMENTS_ON_MINIFYING = False
 
@@ -134,3 +138,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'pub_static')
 
 MEDIA_URL = '/contents/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# google mailing
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'likelionknut@gmail.com'
+EMAIL_HOST_PASSWORD = 'dvvysioqkgxquzcg'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
