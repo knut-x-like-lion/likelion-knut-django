@@ -20,49 +20,68 @@ from .form import *
 
 
 class Faq(View):
+    def post(self, request):
+        return auth_controls(request, '')
+
     def get(self, request):
-        return render(request, 'www/faq.html')
+        if request.user.is_authenticated:
+            profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
+            return render(request, 'www/faq.html', {'profile_form': profile_form, 'edit_password_form': EditPassword()})
+        return render(request, 'www/faq.html', {'reset_password_form': ResetPassword()})
 
 
-class Test(FormView):
-    form_class = EditProfile
-    template_name = 'www/index.html'
-    success_url = '/'
-
-    def form_valid(self, form):
-        pass
+class Auth(View):
+    pass
 
 
-def index(request):
-    queryset = TypeWrite.objects
+class Index(View):
+    typewrite = TypeWrite.objects
     typewrite_result = ""
-    for i in queryset.all():
+    test = 10
+    for i in typewrite.all():
         typewrite_result += "\""
         typewrite_result += i.__str__()
         typewrite_result += "\","
     typewrite_result = typewrite_result[:typewrite_result.__len__() - 1]
-    if request.method == "POST":
-        return auth_controls(request, typewrite_result)
-    else:
+
+    def post(self, request):
+        return auth_controls(request, self.typewrite_result)
+
+    def get(self, request):
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
-            return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'profile_form': profile_form, 'edit_password_form': EditPassword()})
-        return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'reset_password_form': ResetPassword()})
+            return render(request, 'www/index.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'maxim': Maxim.objects, 'typewrite': self.typewrite_result})
+        return render(request, 'www/index.html', {'reset_password_form': ResetPassword(), 'maxim': Maxim.objects, 'typewrite': self.typewrite_result})
 
 
-def posts(request):
-    return render(request, 'www/posts.html', {'posts': Post.objects.order_by('-date_created')})
+class Team(View):
+    def post(self, request):
+        return auth_controls(request, '')
+
+    def get(self, request):
+        operators = User.objects.filter(is_staff=True, is_superuser=False).select_related('advanceduser')
+        members = User.objects.filter(is_staff=False, is_superuser=False).select_related('advanceduser')
+
+        if request.user.is_authenticated:
+            profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
+            return render(request, 'www/team.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'operators': operators, 'members': members})
+        return render(request, 'www/team.html', {'reset_password_form': ResetPassword(), 'operators': operators, 'members': members})
+
+
+class Posts(View):
+    def post(self, request):
+        return auth_controls(request, '')
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
+            return render(request, 'www/posts.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'posts': Post.objects.order_by('-date_created')})
+        return render(request, 'www/posts.html', {'reset_password_form': ResetPassword(), 'posts': Post.objects.order_by('-date_created')})
 
 
 def post(request, post_url):
     content = Post.objects.get(title=post_url)
     return render(request, 'www/post.html', {'post': content})
-
-
-def team(request):
-    operators = User.objects.filter(is_staff=True, is_superuser=False).select_related('advanceduser')
-    members = User.objects.filter(is_staff=False, is_superuser=False).select_related('advanceduser')
-    return render(request, 'www/team.html', {'operators': operators, 'members': members})
 
 
 def portfolio(request):
@@ -162,3 +181,11 @@ class EmailThread(threading.Thread):
         if self.html:
             msg.attach_alternative(self.html, 'text/html')
         msg.send(self.fail_silently)
+
+# class Test(FormView):
+#     form_class = EditProfile
+#     template_name = 'www/index.html'
+#     success_url = '/'
+#
+#     def form_valid(self, form):
+#         pass

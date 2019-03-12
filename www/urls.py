@@ -14,14 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from django.views.generic import TemplateView
 from www import views
+from www.views import *
 
 app_name = 'www'
 urlpatterns = [
-    path('', views.index, name='www'),
+    path('', Index.as_view(), name='www'),
     path('404/', views.error404, name='www'),
-    path('team/', views.team, name='team'),
-    path('post/', views.posts, name='posts'),
+    path('team/', Team.as_view(), name='team'),
+    path('post/', Posts.as_view(), name='posts'),
     path('post/<post_url>/', views.post, name='post'),
-    path('portfolio', views.portfolio, name='portfolio'),
+    path('portfolio/', views.portfolio, name='portfolio'),
+    path('faq/', Faq.as_view(), name='faq'),
+    # path('faq/', Faq.as_view(), name='faq'),
+    # 특별한 로직없이 내용만 보여줄 때 사용
+    # path('faq2/', TemplateView.as_view(template_name="www/posts.html"), name='faq'),
 ]
