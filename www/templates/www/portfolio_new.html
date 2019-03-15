@@ -1,0 +1,41 @@
+{% extends "www/base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}
+    새 포트폴리오 :: KNUT X LIKE LION
+{% endblock title %}
+
+{% block content %}
+
+    <!-- Start Blog Area -->
+    <div id="news" class="blog-area" style="">
+        <div class="blog-inner area-padding">
+            <div class="blog-overly"></div>
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="section-headline text-center">
+                            <h2>포트폴리오 작성</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% if user.is_authenticated %}
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <p>
+                                {{ portfolio_form.as_p }}
+                            </p>
+
+                            <p>
+                                <button type="submit" class="ready-btn" style="margin-top: 0">등록</button>
+                            </p>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Blog -->
+
+{% endblock content %}

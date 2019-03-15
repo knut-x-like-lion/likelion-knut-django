@@ -69,26 +69,31 @@
                             <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a class="page-scroll" href="/post">새 소식</a>
+                                        <a class="page-scroll" href="{% url 'www:notice_list' %}">새 소식</a>
                                     </li>
                                     <li>
-                                        <a class="page-scroll" href="/team">TEAM</a>
+                                        <a class="page-scroll" href="{% url 'www:team' %}">TEAM</a>
                                     </li>
                                     {#                                    <li>#}
                                     {#                                        <a class="page-scroll" href="/comments">방명록</a>#}
                                     {#                                    </li>#}
-{#                                    <li>#}
-{#                                        <a class="page-scroll" href="/portfolio">포트폴리오</a>#}
-{#                                    </li>#}
+                                    {#                                    <li>#}
+                                    {#                                        <a class="page-scroll" href="/portfolio">포트폴리오</a>#}
+                                    {#                                    </li>#}
                                     <li>
-                                        <a class="page-scroll" href="/faq">FAQ</a>
+                                        <a class="page-scroll" href="{% url 'www:faq' %}">FAQ</a>
                                     </li>
+{#                                    {% if user.is_authenticated %}#}
+{#                                        <li>#}
+{#                                            <a class="page-scroll" href="{% url 'www:assignments' %}">과제 제출</a>#}
+{#                                        </li>#}
+{#                                    {% endif %}#}
                                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">바로가기<span
                                             class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a href="https://facebook.com/likelionKNUT" target="_blank">Facebook 페이지</a></li>
                                             <li><a href="https://opentutorials.org/course/3663" target="_blank">오픈튜토리얼스</a></li>
-{#                                            <li><a href="https://xn--3v4ba966l.likelion-knut.dev" target="_blank">실험실</a></li>#}
+                                            {#                                            <li><a href="https://xn--3v4ba966l.likelion-knut.dev" target="_blank">실험실</a></li>#}
                                             <li><a
                                                     href="https://calendar.google.com/calendar?cid=bW5kOWdqMTZjZXVnYTd2MmZoaGpxYmpmcDBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
                                                     target="_blank">공식 일정</a></li>
@@ -96,7 +101,7 @@
                                         </ul>
                                     </li>
                                     {% if user.is_authenticated %}
-                                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}<span
+                                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.advanceduser.nickname|default_if_none:user.username }}<span
                                                 class="caret"></span></a>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li>
@@ -379,7 +384,7 @@
                         <form method="post">
                             {% csrf_token %}
                             <p>
-                                {{ password_form.as_p }}
+                                {{ edit_password_form.as_p }}
                             </p>
                             <input type="hidden" name="submit_type" value="edit_password">
                             <p>

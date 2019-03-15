@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="info">
                                         <div class="title">
-                                            <a target="_blank">{{ i.last_name|default_if_none:"" }}{{ i.first_name|default_if_none:"" }}</a>
+                                            <a target="_blank">{{ i.advanceduser.nickname|default_if_none:i.username }}</a>
                                         </div>
                                         <div class="desc">{{ i.advanceduser.position|default_if_none:"" }}</div>
                                         <div class="desc">{{ i.advanceduser.message|default_if_none:"" }}</div>
