@@ -19,42 +19,43 @@ from .form import *
 # todo ajax로 로그인/가입 비밀번호 불일치 처리
 
 
-class Faq(View):
-    def post(self, request):
-        return auth_controls(request, '')
-
+class FaqView(View):
     def get(self, request):
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
-            return render(request, 'www/faq.html', {'profile_form': profile_form, 'edit_password_form': EditPassword()})
-        return render(request, 'www/faq.html', {'reset_password_form': ResetPassword()})
+            return render(request, 'www/faq.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'faq_1': Faq.objects.filter(tag_id=1), 'faq_2': Faq.objects.filter(tag_id=2)})
+        return render(request, 'www/faq.html', {'reset_password_form': ResetPassword(), 'faq_1': Faq.objects.filter(tag_id=1), 'faq_2': Faq.objects.filter(tag_id=2)})
 
 
 class Auth(View):
     pass
 
 
-class Index(View):
-    typewrite = TypeWrite.objects
-    typewrite_result = ""
-    test = 10
-    for i in typewrite.all():
-        typewrite_result += "\""
-        typewrite_result += i.__str__()
-        typewrite_result += "\","
-    typewrite_result = typewrite_result[:typewrite_result.__len__() - 1]
+class IndexView(View):
 
     def post(self, request):
-        return auth_controls(request, self.typewrite_result)
+        typewrite_result = ""
+        for i in TypeWrite.objects.all():
+            typewrite_result += "\""
+            typewrite_result += i.__str__()
+            typewrite_result += "\","
+        typewrite_result = typewrite_result[:typewrite_result.__len__() - 1]
+        return auth_controls(request, typewrite_result)
 
     def get(self, request):
+        typewrite_result = ""
+        for i in TypeWrite.objects.all():
+            typewrite_result += "\""
+            typewrite_result += i.__str__()
+            typewrite_result += "\","
+        typewrite_result = typewrite_result[:typewrite_result.__len__() - 1]
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
-            return render(request, 'www/index.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'maxim': Maxim.objects, 'typewrite': self.typewrite_result})
-        return render(request, 'www/index.html', {'reset_password_form': ResetPassword(), 'maxim': Maxim.objects, 'typewrite': self.typewrite_result})
+            return render(request, 'www/index.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'maxim': Maxim.objects, 'typewrite': typewrite_result})
+        return render(request, 'www/index.html', {'reset_password_form': ResetPassword(), 'maxim': Maxim.objects, 'typewrite': typewrite_result})
 
 
-class Team(View):
+class TeamView(View):
     def post(self, request):
         return auth_controls(request, '')
 
@@ -68,20 +69,123 @@ class Team(View):
         return render(request, 'www/team.html', {'reset_password_form': ResetPassword(), 'operators': operators, 'members': members})
 
 
-class Posts(View):
+class NoticeContentView(View):
+    def get(self, request, title):
+        if request.user.is_authenticated:
+            profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
+            return render(request, 'www/notice.html',
+                          {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'posts': Notice.objects.order_by('-date_created'), 'notice': Notice.objects.get(title=title)})
+        return render(request, 'www/notice.html', {'reset_password_form': ResetPassword(), 'posts': Notice.objects.order_by('-date_created'), 'notice': Notice.objects.get(title=title)})
+
+
+class NoticeListView(View):
     def post(self, request):
         return auth_controls(request, '')
 
     def get(self, request):
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
-            return render(request, 'www/posts.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'posts': Post.objects.order_by('-date_created')})
-        return render(request, 'www/posts.html', {'reset_password_form': ResetPassword(), 'posts': Post.objects.order_by('-date_created')})
+            return render(request, 'www/notice_list.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'notice': Notice.objects.order_by('-date_created')})
+        return render(request, 'www/notice_list.html', {'reset_password_form': ResetPassword(), 'notice': Notice.objects.order_by('-date_created')})
 
 
-def post(request, post_url):
-    content = Post.objects.get(title=post_url)
-    return render(request, 'www/post.html', {'post': content})
+class NoticeNewView(View):
+    def post(self, request):
+        if request.user.is_authenticated:
+            try:
+                form_data = NewPortfolio(request.POST, request.FILES)
+                # form_data.author = auth.get_user(request).username
+                if form_data.is_valid():
+                    form_data.save()
+                    # obj = form_data.save(commit=False)
+                    # obj.user = request.user
+                    # obj.save()
+                    return HttpResponseRedirect('/assignment')
+                else:
+                    raise Exception
+            except Exception:
+                return HttpResponseRedirect('/assignment', {'flash_data': '제출 과정에서 오류가 발생했습니다.'})
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
+            return render(request, 'www/portfolio_new.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'notice_form': NewPortfolio()})
+        return HttpResponseRedirect('/notice')
+
+
+#
+# def post(request, post_url):
+#     content = Post.objects.get(title=post_url)
+#     return render(request, 'www/post.html', {'post': content})
+
+
+class AssignmentListView(View):
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
+            return render(request, 'www/assignments.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'assignments': Portfolio.objects.order_by('-datetime_created')})
+        return render(request, 'www/assignments.html', {'reset_password_form': ResetPassword(), 'posts': Portfolio.objects.order_by('-datetime_created')})
+
+
+class AssignmentGetView(View):
+
+    def get(self, request, assignment_url):
+        if request.user.is_authenticated:
+            profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
+            return render(request, 'www/assignment.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'assignment': Portfolio.objects.get(id=assignment_url)})
+        return render(request, 'www/assignment.html', {'reset_password_form': ResetPassword(), 'posts': Portfolio.objects.order_by('-date_created')})
+
+
+class AssignmentEditView(View):
+
+    def post(self, request, assignment_url):
+        if request.user.is_authenticated:
+            try:
+                form_data = NewPortfolio(request.POST, request.FILES)
+                # form_data.author = auth.get_user(request).username
+                if form_data.is_valid():
+                    assignment = Portfolio.objects.get(id=assignment_url)
+                    assignment.title = request.POST['title']
+                    assignment.content = request.POST['content']
+                    assignment.file = request.POST['file']
+                    assignment.save()
+                    return HttpResponseRedirect('/assignment')
+                else:
+                    raise Exception
+            except Exception:
+                return HttpResponseRedirect('/assignment', {'flash_data': '제출 과정에서 오류가 발생했습니다.'})
+
+    def get(self, request, assignment_url):
+        if request.user.is_authenticated:
+            profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
+            assignment_form = NewPortfolio(instance=Portfolio.objects.get(id=assignment_url))
+            return render(request, 'www/assignment_new.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'assignment_form': assignment_form})
+        return render(request, 'www/assignment_new.html', {'reset_password_form': ResetPassword(), 'posts': Portfolio.objects.order_by('-date_created')})
+
+
+class AssignmentNewView(View):
+    def post(self, request):
+        if request.user.is_authenticated:
+            try:
+                form_data = NewPortfolio(request.POST, request.FILES)
+                # form_data.author = auth.get_user(request).username
+                if form_data.is_valid():
+                    form_data.save()
+                    # obj = form_data.save(commit=False)
+                    # obj.user = request.user
+                    # obj.save()
+                    return HttpResponseRedirect('/assignment')
+                else:
+                    raise Exception
+            except Exception:
+                return HttpResponseRedirect('/assignment', {'flash_data': '제출 과정에서 오류가 발생했습니다.'})
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
+            return render(request, 'www/assignment_new.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'assignment_form': NewAssignment()})
+        return HttpResponseRedirect('/assignment')
 
 
 def portfolio(request):
@@ -105,11 +209,16 @@ def auth_controls(request, typewrite_result):
     elif request.POST['submit_type'] == "signup":
         if request.POST['password'] == request.POST['password-verify']:
             try:
-                user = User.objects.create_user(username=request.POST['username'], email=request.POST['email'], password=request.POST['password'])
-                advanced_user = AdvancedUser(user_id=user.id)
-                advanced_user.save()
-                auth.login(request, user)
+                if not User.objects.filter(email=request.POST['email']):
+                    user = User.objects.create_user(username=request.POST['username'], email=request.POST['email'], password=request.POST['password'])
+                    advanced_user = AdvancedUser(user_id=user.id)
+                    advanced_user.save()
+                    auth.login(request, user)
+                else:
+                    raise Exception
             except IntegrityError:
+                flash_data = 'failedSignup'
+            except Exception:
                 flash_data = 'failedSignup'
             else:
                 flash_data = 'successSignup'
@@ -181,11 +290,3 @@ class EmailThread(threading.Thread):
         if self.html:
             msg.attach_alternative(self.html, 'text/html')
         msg.send(self.fail_silently)
-
-# class Test(FormView):
-#     form_class = EditProfile
-#     template_name = 'www/index.html'
-#     success_url = '/'
-#
-#     def form_valid(self, form):
-#         pass
