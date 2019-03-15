@@ -36,8 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'www.apps.WwwConfig',
-
-    'imagekit'
+    'imagekit',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -145,6 +145,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'likelionknut@gmail.com'
-EMAIL_HOST_PASSWORD = 'dvvysioqkgxquzcg'
+EMAIL_HOST_PASSWORD = 'sjqsfuzfvpvnhmde'
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'width': '100%',
+        'lang': 'ko-KR',
+        'height': '480',
+    },
+    # 'disable_attachment': True,
+}
