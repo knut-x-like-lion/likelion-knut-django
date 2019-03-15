@@ -1,27 +1,12 @@
 from django import forms
-from .models import AdvancedUser
-
-
-class BlogPost(forms.ModelForm):
-    class Meta:
-        # model = Blog
-        fields = ['title', 'body']
+from .models import AdvancedUser, Portfolio, Notice
+from django_summernote import fields as summer_fields
 
 
 class EditPassword(forms.Form):
-    current_password = forms.CharField(required=True)
-    password = forms.CharField(required=True)
-    password_verify = forms.CharField(required=True)
-    widgets = {
-        'current_password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': "현재 비밀번호"}),
-        'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': "비밀번호 변경"}),
-        'password_verify': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': "비밀번호 확인"}, ),
-    }
-    labels = {
-        'current_password': '',
-        'password': '',
-        'password_verify': '',
-    }
+    current_password = forms.CharField(required=True, label='', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': "현재 비밀번호"}))
+    password = forms.CharField(required=True, label='', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': "새 비밀번호"}))
+    password_verify = forms.CharField(required=True, label='', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': "새 비밀번호 확인"}))
 
 
 class EditProfile(forms.ModelForm):
@@ -40,11 +25,53 @@ class EditProfile(forms.ModelForm):
         labels = {
             'nickname': '',
             'message': '',
-            'picture': '프로필 사진',
+            'picture': '프로필 사진 (1:1 비율)',
             'background': '배경 사진',
             'link1': '',
             'link2': '',
             'link3': '',
+        }
+
+
+class NoticeForm(forms.ModelForm):
+    content = summer_fields.SummernoteTextFormField(error_messages={'required': '데이터를 입력해주세요', })
+
+    class Meta:
+        model = Notice
+        fields = ['title', 'summary', 'content']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "제목"}),
+            'summary': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "요약"}),
+            # 'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "내용"}),
+            # 'content': SummernoteInplaceWidget(attrs={'class': 'form-control', 'placeholder': "내용"}),
+            # 'file': forms.FileInput(),
+        }
+        labels = {
+            'title': '',
+            'summary': '',
+            'content': '',
+            'file': '',
+        }
+
+
+class NewPortfolio(forms.ModelForm):
+    content = summer_fields.SummernoteTextFormField(error_messages={'required': (u'데이터를 입력해주세요'), })
+
+    class Meta:
+        model = Portfolio
+        fields = ['title', 'summary', 'content', 'file']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "제목"}),
+            'summary': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "요약"}),
+            # 'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': "내용"}),
+            # 'content': SummernoteInplaceWidget(attrs={'class': 'form-control', 'placeholder': "내용"}),
+            'file': forms.FileInput(),
+        }
+        labels = {
+            'title': '',
+            'summary': '',
+            'content': '',
+            'file': '',
         }
 
 
