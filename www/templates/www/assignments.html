@@ -2,7 +2,7 @@
 {% load static from staticfiles %}
 
 {% block title %}
-    새로운 소식 :: KNUT X LIKE LION
+    과제 :: KNUT X LIKE LION
 {% endblock title %}
 
 {% block content %}
@@ -15,44 +15,47 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="section-headline text-center">
-                            <h2>새로운 소식</h2>
+                            <h2>과제 제출</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    {% for post in posts %}
+                    {% for assignment in assignments %}
                         <!-- Start Left Blog -->
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="single-blog">
-                                <div class="single-blog-img">
-                                    <a href="{{ post.title }}">
-                                        <img src="{{ post.thumbnail.url }}" alt="">
-                                    </a>
-                                </div>
                                 <div class="blog-meta">
                                     <span class="date-type">
-                                        <i class="fa fa-user"></i>{{ post.author }}
-                                        <i class="fa fa-calendar"></i>{{ post.date_created }}&nbsp;
+                                        <i class="fa fa-calendar"></i>{{ assignment.datetime_created }}&nbsp;
                                     </span>
                                 </div>
                                 <div class="blog-text">
                                     <h4>
-                                        <a href="{{ post.title }}">{{ post.title }}</a>
+                                        <a href="{{ assignment.id }}">{{ assignment.title }}</a>
                                     </h4>
                                     <p>
-                                        {{ post.summary }}
+                                        {{ assignment.summary }}
                                     </p>
                                 </div>
-                                <span>
-                                <a href="{{ post.title }}" class="ready-btn">Read more</a>
-                              </span>
                             </div>
                         </div>
                         <!-- End Left Blog-->
                     {% endfor %}
                 </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="single-blog">
+                            <div class="blog-text">
+                                <span>
+                                    <a href="{% url 'www:assignment_new' %}" class="ready-btn">새 과제 업로드</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!-- End Blog -->
+
 {% endblock content %}

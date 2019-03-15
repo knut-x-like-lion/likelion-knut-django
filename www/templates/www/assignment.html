@@ -1,0 +1,54 @@
+{% extends "www/base.html" %}
+{% load static from staticfiles %}
+
+{% block title %}
+    과제 :: KNUT X LIKE LION
+{% endblock title %}
+
+{% block content %}
+
+    <div class="blog-page area-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Start single blog -->
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <article class="blog-post-wrapper">
+                                <div class="post-thumbnail">
+                                </div>
+                                <div class="post-information">
+                                    <h2>{{ assignment.title }}</h2>
+                                    <div class="entry-meta">
+                                        <span><i class="fa fa-clock-o"></i>{{ assignment.datetime_created }}</span>
+                                    </div>
+                                    <div class="entry-content">
+                                        {{ assignment.content|safe }}
+                                    </div>
+                                    {% if assignment.file %}
+                                        <p style="margin:20px">
+                                            <a href="{{ assignment.file.url }}">파일</a>
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            </article>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="single-blog">
+                                <div class="blog-text">
+                                <span>
+                                    <a href="{% url 'www:assignment_edit' assignment.id %}" class="ready-btn">수정</a>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
