@@ -22,8 +22,8 @@ class AdvancedUser(models.Model):
 
 class Member(models.Model):
     class Meta:
-        verbose_name = '멤버'
-        verbose_name_plural = '멤버'
+        verbose_name = '등록된 멤버'
+        verbose_name_plural = '등록된 멤버'
 
     email = models.EmailField(null=False, blank=False)
 
@@ -62,7 +62,7 @@ class Notice(models.Model):
     title = models.CharField(max_length=30, null=False, blank=False, verbose_name='제목')
     summary = models.CharField(max_length=50, null=True, blank=True, verbose_name='요약')
     author = models.CharField(max_length=20, null=False, blank=False, default='운영진', verbose_name='작성자')
-    date_created = models.DateField(auto_now_add=True, verbose_name='작성일')
+    date_created = models.DateField(auto_now_add=False, verbose_name='작성일')
     content = models.TextField(max_length=5000, null=True, blank=False, verbose_name='내용')
     file = models.FileField(upload_to='www/files', null=True, blank=True)
 
@@ -114,11 +114,3 @@ class Portfolio(models.Model):
     def __str__(self):
         return self.title
 
-
-class PortfolioTag(models.Model):
-    class Meta:
-        verbose_name = '포트폴리오 태그'
-        verbose_name_plural = '포트폴리오 태그'
-
-    label = models.CharField(max_length=30, null=False, blank=False)
-    tag_name = models.CharField(max_length=15, null=True, blank=True)
