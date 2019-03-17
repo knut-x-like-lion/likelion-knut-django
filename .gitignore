@@ -1,3 +1,6 @@
 .idea/*
 venv/*
 db.sqlite3
+media/*
+likelion_dev/SECRET_KEY
+likelion_dev/settings.py
