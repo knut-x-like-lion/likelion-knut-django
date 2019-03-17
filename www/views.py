@@ -61,7 +61,9 @@ class TeamView(View):
 
     def get(self, request):
         operators = User.objects.filter(is_staff=True, is_superuser=False).select_related('advanceduser')
+        # todo  쿼리 최적화
         members = User.objects.filter(is_staff=False, is_superuser=False).select_related('advanceduser')
+        members = members.raw('SELECT * FROM auth_user JOIN www_member ON auth_user.email = www_member.email')
 
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
