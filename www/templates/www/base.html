@@ -83,11 +83,11 @@
                                     <li>
                                         <a class="page-scroll" href="{% url 'www:faq' %}">FAQ</a>
                                     </li>
-{#                                    {% if user.is_authenticated %}#}
-{#                                        <li>#}
-{#                                            <a class="page-scroll" href="{% url 'www:assignments' %}">과제 제출</a>#}
-{#                                        </li>#}
-{#                                    {% endif %}#}
+                                    {#                                    {% if user.is_authenticated %}#}
+                                    {#                                        <li>#}
+                                    {#                                            <a class="page-scroll" href="{% url 'www:assignments' %}">과제 제출</a>#}
+                                    {#                                        </li>#}
+                                    {#                                    {% endif %}#}
                                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">바로가기<span
                                             class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
@@ -110,6 +110,11 @@
                                                 <li>
                                                     <a href="#modal-edit-password" data-toggle="modal">비밀번호 변경</a>
                                                 </li>
+                                                {% if user.is_staff %}
+                                                    <li>
+                                                        <a href="/admin" data-toggle="modal">관리자 페이지</a>
+                                                    </li>
+                                                {% endif %}
                                                 <li>
                                                     <form id="form-logout" action="/" method="POST">
                                                         {% csrf_token %}
@@ -234,7 +239,7 @@
                                 <h4>SERVER STATUS</h4>
                                 <div class="flicker-img">
                                     {#                                    todo 비동기로 받아올 것#}
-{#                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/54.180.98.194.svg?label=Deploy&logo=ubuntu&style=popout-square">#}
+                                    {#                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/54.180.98.194.svg?label=Deploy&logo=ubuntu&style=popout-square">#}
                                     {#                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/52.78.170.250.svg?color=yellow&label=Labs&logo=nginx&style=popout-square">#}
                                     {#                                    <img alt="Website" src="https://img.shields.io/website-RUNNING-DOWN-green-red/http/52.78.170.250.svg?color=blue&label=VM&logo=windows&logoColor=00ADEF&style=popout-square">#}
                                 </div>
