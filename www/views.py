@@ -209,6 +209,9 @@ def auth_controls(request, typewrite_result):
             return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': 'failedLogin'})
 
     elif request.POST['submit_type'] == "signup":
+
+
+
         if request.POST['password'] == request.POST['password-verify']:
             try:
                 if not User.objects.filter(email=request.POST['email']):
@@ -227,7 +230,11 @@ def auth_controls(request, typewrite_result):
         else:
             flash_data = 'notMatchPassword'
 
-        return render(request, 'www/index.html', {'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': flash_data})
+        if request.user.is_authenticated:
+            profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
+            return render(request, 'www/index.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': flash_data})
+        return render(request, 'www/index.html', {'reset_password_form': ResetPassword(), 'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': flash_data})
+
     elif request.POST['submit_type'] == "logout":
         auth.logout(request)
         return HttpResponseRedirect('/')
