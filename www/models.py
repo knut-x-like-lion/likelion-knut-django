@@ -63,7 +63,7 @@ class Notice(models.Model):
     summary = models.CharField(max_length=50, null=True, blank=True, verbose_name='요약')
     author = models.CharField(max_length=20, null=False, blank=False, default='운영진', verbose_name='작성자')
     date_created = models.DateField(auto_now_add=False, verbose_name='작성일')
-    content = models.TextField(max_length=5000, null=True, blank=False, verbose_name='내용')
+    content = models.TextField(max_length=10000, null=True, blank=False, verbose_name='내용')
     file = models.FileField(upload_to='www/files', null=True, blank=True)
 
     # thumbnail = ImageSpecField(source='image', processors=[ResizeToFill(320, 100)], format='JPEG', options={'quality': 90})
