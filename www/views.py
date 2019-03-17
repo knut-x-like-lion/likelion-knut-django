@@ -60,9 +60,9 @@ class TeamView(View):
         return auth_controls(request, '')
 
     def get(self, request):
-        operators = User.objects.filter(is_staff=True, is_superuser=False).select_related('advanceduser')
+        operators = User.objects.filter(is_staff=True, is_superuser=False).select_related('advanceduser').order_by('-date_joined')
         # todo  쿼리 최적화
-        members = User.objects.filter(is_staff=False, is_superuser=False).select_related('advanceduser')
+        members = User.objects.filter(is_staff=False, is_superuser=False).select_related('advanceduser').order_by('-date_joined')
         members = members.raw('SELECT * FROM auth_user JOIN www_member ON auth_user.email = www_member.email')
 
         if request.user.is_authenticated:
