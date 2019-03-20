@@ -121,13 +121,12 @@ class NoticeNewView(View):
 #     return render(request, 'www/post.html', {'post': content})
 
 
-class AssignmentListView(View):
-
+class PortfolioView(View):
     def get(self, request):
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
-            return render(request, 'www/assignments.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'assignments': Portfolio.objects.order_by('-datetime_created')})
-        return render(request, 'www/assignments.html', {'reset_password_form': ResetPassword(), 'posts': Portfolio.objects.order_by('-datetime_created')})
+            return render(request, 'www/portfolio.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'assignments': Portfolio.objects.order_by('-datetime_created')})
+        return render(request, 'www/portfolio.html', {'reset_password_form': ResetPassword(), 'posts': Portfolio.objects.order_by('-datetime_created')})
 
 
 class AssignmentGetView(View):
@@ -210,8 +209,6 @@ def auth_controls(request, typewrite_result):
 
     elif request.POST['submit_type'] == "signup":
 
-
-
         if request.POST['password'] == request.POST['password-verify']:
             try:
                 if not User.objects.filter(email=request.POST['email']):
@@ -232,7 +229,8 @@ def auth_controls(request, typewrite_result):
 
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
-            return render(request, 'www/index.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': flash_data})
+            return render(request, 'www/index.html',
+                          {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': flash_data})
         return render(request, 'www/index.html', {'reset_password_form': ResetPassword(), 'maxim': Maxim.objects, 'typewrite': typewrite_result, 'flash_data': flash_data})
 
     elif request.POST['submit_type'] == "logout":
