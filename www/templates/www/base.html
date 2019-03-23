@@ -72,9 +72,6 @@
                                     <li>
                                         <a class="page-scroll" href="{% url 'www:team' %}">TEAM</a>
                                     </li>
-                                    {#                                    <li>#}
-                                    {#                                        <a class="page-scroll" href="/comments">방명록</a>#}
-                                    {#                                    </li>#}
                                     <li>
                                         <a class="page-scroll" href="{% url 'www:portfolio' %}">포트폴리오</a>
                                     </li>
@@ -89,13 +86,23 @@
                                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">바로가기<span
                                             class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="https://facebook.com/likelionKNUT" target="_blank">Facebook 페이지</a></li>
-                                            <li><a href="https://opentutorials.org/course/3663" target="_blank">오픈튜토리얼스</a></li>
+                                            <li>
+                                                <a class="page-scroll" href="https://class.likelion.org" target="_self">클래스 라이언</a>
+                                            </li>
+                                            <li>
+                                                <a href="https://opentutorials.org/course/3663" target="_self">오픈튜토리얼스</a>
+                                            </li>
+                                            <li>
+                                                <a href="https://facebook.com/likelionKNUT" target="_self">Facebook 페이지</a>
+                                            </li>
                                             {#                                            <li><a href="https://xn--3v4ba966l.likelion-knut.dev" target="_blank">실험실</a></li>#}
-                                            <li><a
-                                                    href="https://calendar.google.com/calendar?cid=bW5kOWdqMTZjZXVnYTd2MmZoaGpxYmpmcDBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
-                                                    target="_blank">공식 일정</a></li>
-                                            <li><a href="https://bit.ly/2WDQuVW" target="_blank">운영회칙</a></li>
+                                            <li>
+                                                <a href="https://calendar.google.com/calendar?cid=bW5kOWdqMTZjZXVnYTd2MmZoaGpxYmpmcDBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
+                                                   target="_blank">공식 일정</a>
+                                            </li>
+                                            <li>
+                                                <a href="https://bit.ly/2WDQuVW" target="_blank">운영회칙</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     {% if user.is_authenticated %}
