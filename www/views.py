@@ -1,13 +1,9 @@
-from django.core.exceptions import ObjectDoesNotExist, FieldDoesNotExist
 from django.db import IntegrityError
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic import View
-from django.views.generic.edit import FormView
-from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib import auth
-from django.core.mail import EmailMessage
 from django.core.mail import EmailMultiAlternatives
 
 import threading
