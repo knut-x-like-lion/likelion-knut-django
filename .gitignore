@@ -2,7 +2,7 @@
 venv/
 db.sqlite3
 media/
-likelion_dev/settings.py
+likelion_knut_dev/settings.py
 pub_static/
 __pycache__
 migrations/
