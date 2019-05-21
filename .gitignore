@@ -3,6 +3,7 @@ venv/
 db.sqlite3
 media/
 likelion_knut_dev/settings.py
+likelion_knut_dev/wsgi.py
 pub_static/
 __pycache__
 migrations/
