@@ -1,9 +1,8 @@
-.idea/*
-venv/*
+.idea/
+venv/
 db.sqlite3
-media/*
-likelion_dev/SECRET_KEY
+media/
 likelion_dev/settings.py
 pub_static/
 __pycache__
-migrations/*
+migrations/
