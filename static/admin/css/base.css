@@ -520,7 +520,7 @@ input[type=button][disabled].default {
     font-weight: 400;
     font-size: 13px;
     text-align: left;
-    background: #ff9e1b;
+    background: #d3bc8d;
     color: #fff;
 }
 
@@ -889,7 +889,7 @@ table#change-history tbody th {
 #user-tools a:focus, #user-tools a:hover {
     text-decoration: none;
     border-bottom-color: #ff9e1b;
-    color: #ff9e1b;
+    color: #d3bc8d;
 }
 
 /* SIDEBAR */
