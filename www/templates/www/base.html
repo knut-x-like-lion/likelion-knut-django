@@ -117,7 +117,7 @@
                                                 </li>
                                                 {% if user.is_staff %}
                                                     <li>
-                                                        <a href="/admin" data-toggle="modal">관리자 페이지</a>
+                                                        <a href="{% url 'admin' %}" data-toggle="modal">관리자 페이지</a>
                                                     </li>
                                                 {% endif %}
                                                 <li>
