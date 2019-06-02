@@ -1,5 +1,5 @@
 from django.db import IntegrityError
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import View, ListView
@@ -8,8 +8,8 @@ from django.contrib import auth
 from django.core.mail import EmailMultiAlternatives
 
 import threading
-from .models import *
-from .form import *
+from www.models import *
+from www.form import *
 
 
 # Create your views here.
