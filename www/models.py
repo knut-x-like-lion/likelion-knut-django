@@ -59,12 +59,14 @@ class Notice(models.Model):
     class Meta:
         verbose_name = '공지사항'
         verbose_name_plural = '공지사항'
+        ordering = ('-created_date',)
 
     title = models.CharField(max_length=30, null=False, blank=False, verbose_name='제목')
     slug = models.SlugField(allow_unicode=True, help_text='주소표시줄에 나타날 문자열')
     summary = models.CharField(max_length=50, null=True, blank=True, verbose_name='요약')
     author = models.CharField(max_length=20, null=False, blank=False, default='운영진', verbose_name='작성자')
-    date_created = models.DateField(auto_now_add=False, verbose_name='작성일')
+    created_date = models.DateField(auto_now_add=False, verbose_name='작성날짜')
+    modified_datetime = models.DateField(auto_now_add=True, verbose_name='수정날짜시각')
     content = models.TextField(max_length=10000, null=True, blank=False, verbose_name='내용')
     file = models.FileField(upload_to='www/files', null=True, blank=True)
 

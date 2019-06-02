@@ -72,8 +72,8 @@ class NoticeContentView(View):
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
             return render(request, 'www/notice.html',
-                          {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'posts': Notice.objects.order_by('-date_created'), 'notice': Notice.objects.get(title=title)})
-        return render(request, 'www/notice.html', {'reset_password_form': ResetPassword(), 'posts': Notice.objects.order_by('-date_created'), 'notice': Notice.objects.get(title=title)})
+                          {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'posts': Notice.objects.order_by('-created_date'), 'notice': Notice.objects.get(slug=slug)})
+        return render(request, 'www/notice.html', {'reset_password_form': ResetPassword(), 'posts': Notice.objects.order_by('-created_date'), 'notice': Notice.objects.get(slug=slug)})
 
 
 class NoticeListView(View):
@@ -83,8 +83,8 @@ class NoticeListView(View):
     def get(self, request):
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
-            return render(request, 'www/notice_list.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'notice': Notice.objects.order_by('-date_created')})
-        return render(request, 'www/notice_list.html', {'reset_password_form': ResetPassword(), 'notice': Notice.objects.order_by('-date_created')})
+            return render(request, 'www/notice_list.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'notice': Notice.objects.order_by('-created_date')})
+        return render(request, 'www/notice_list.html', {'reset_password_form': ResetPassword(), 'notice': Notice.objects.order_by('-created_date')})
 
 
 class NoticeNewView(View):
@@ -131,7 +131,7 @@ class AssignmentGetView(View):
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
             return render(request, 'www/assignment.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'assignment': Portfolio.objects.get(id=assignment_url)})
-        return render(request, 'www/assignment.html', {'reset_password_form': ResetPassword(), 'posts': Portfolio.objects.order_by('-date_created')})
+        return render(request, 'www/assignment.html', {'reset_password_form': ResetPassword(), 'posts': Portfolio.objects.order_by('-created_date')})
 
 
 class AssignmentEditView(View):
@@ -158,7 +158,7 @@ class AssignmentEditView(View):
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
             assignment_form = NewPortfolio(instance=Portfolio.objects.get(id=assignment_url))
             return render(request, 'www/assignment_new.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'assignment_form': assignment_form})
-        return render(request, 'www/assignment_new.html', {'reset_password_form': ResetPassword(), 'posts': Portfolio.objects.order_by('-date_created')})
+        return render(request, 'www/assignment_new.html', {'reset_password_form': ResetPassword(), 'posts': Portfolio.objects.order_by('-created_date')})
 
 
 class AssignmentNewView(View):

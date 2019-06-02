@@ -25,14 +25,14 @@
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="single-blog">
                                 <div class="single-blog-img">
-{#                                    <a href="{{ i.title }}">#}
-{#                                        <img src="{{ i.thumbnail.url }}" alt="">#}
-{#                                    </a>#}
+                                    {#                                    <a href="{{ i.title }}">#}
+                                    {#                                        <img src="{{ i.thumbnail.url }}" alt="">#}
+                                    {#                                    </a>#}
                                 </div>
                                 <div class="blog-meta">
                                     <span class="date-type">
                                         <i class="fa fa-user"></i>{{ i.author }}
-                                        <i class="fa fa-calendar"></i>{{ i.date_created }}&nbsp;
+                                        <i class="fa fa-calendar"></i>{{ i.created_date }}&nbsp;
                                     </span>
                                 </div>
                                 <div class="blog-text">
@@ -51,17 +51,17 @@
                         <!-- End Left Blog-->
                     {% endfor %}
                 </div>
-{#                <div class="row">#}
-{#                    <div class="col-md-12 col-sm-12 col-xs-12">#}
-{#                        <div class="single-blog">#}
-{#                            <div class="blog-text">#}
-{#                                <span>#}
-{#                                    <a href="{% url 'www:notice_new' %}" class="ready-btn">새 공지</a>#}
-{#                                </span>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
+                {#                <div class="row">#}
+                {#                    <div class="col-md-12 col-sm-12 col-xs-12">#}
+                {#                        <div class="single-blog">#}
+                {#                            <div class="blog-text">#}
+                {#                                <span>#}
+                {#                                    <a href="{% url 'www:notice_new' %}" class="ready-btn">새 공지</a>#}
+                {#                                </span>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
             </div>
         </div>
     </div>
