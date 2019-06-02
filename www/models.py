@@ -4,6 +4,7 @@ from imagekit.processors import ResizeToFill
 from django.contrib.auth.models import User
 from django_summernote import models as summer_model
 from django_summernote import fields as summer_fields
+from django.utils.text import slugify
 
 
 # Create your models here.
@@ -60,6 +61,7 @@ class Notice(models.Model):
         verbose_name_plural = '공지사항'
 
     title = models.CharField(max_length=30, null=False, blank=False, verbose_name='제목')
+    slug = models.SlugField(allow_unicode=True, help_text='주소표시줄에 나타날 문자열')
     summary = models.CharField(max_length=50, null=True, blank=True, verbose_name='요약')
     author = models.CharField(max_length=20, null=False, blank=False, default='운영진', verbose_name='작성자')
     date_created = models.DateField(auto_now_add=False, verbose_name='작성일')
@@ -67,6 +69,10 @@ class Notice(models.Model):
     file = models.FileField(upload_to='www/files', null=True, blank=True)
 
     # thumbnail = ImageSpecField(source='image', processors=[ResizeToFill(320, 100)], format='JPEG', options={'quality': 90})
+
+    def save(self, raw=False, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.slug = slugify(self.title, allow_unicode=True)
+        super().save(force_insert, force_update, using, update_fields)
 
     def __str__(self):
         return self.title
@@ -113,4 +119,3 @@ class Portfolio(models.Model):
 
     def __str__(self):
         return self.title
-
