@@ -1,7 +1,8 @@
 from django.db import IntegrityError
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.views.generic import View
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import View, ListView
 from django.contrib.auth.hashers import check_password
 from django.contrib import auth
 from django.core.mail import EmailMultiAlternatives

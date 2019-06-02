@@ -76,6 +76,12 @@ class Notice(models.Model):
         self.slug = slugify(self.title, allow_unicode=True)
         super().save(force_insert, force_update, using, update_fields)
 
+    def get_previous_post(self):
+        return self.get_previous_by_created_date()
+
+    def get_next_post(self):
+        return self.get_previous_by_created_date()
+
     def __str__(self):
         return self.title
 
