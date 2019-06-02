@@ -68,7 +68,7 @@ class TeamView(View):
 
 
 class NoticeContentView(View):
-    def get(self, request, title):
+    def get(self, request, slug):
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
             return render(request, 'www/notice.html',
