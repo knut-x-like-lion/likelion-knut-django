@@ -182,7 +182,7 @@ class AssignmentNewView(View):
     def get(self, request):
         if request.user.is_authenticated:
             profile_form = EditProfile(instance=AdvancedUser.objects.get(user_id=auth.get_user(request).id))
-            return render(request, 'www/assignment_new.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'assignment_form': NewAssignment()})
+            return render(request, 'www/assignment_new.html', {'profile_form': profile_form, 'edit_password_form': EditPassword(), 'assignment_form': NewPortfolio()})
         return HttpResponseRedirect('/assignment')
 
 
