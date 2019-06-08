@@ -22,15 +22,15 @@ class UserAdmin(BaseUserAdmin):
 
 class NoticeAdmin(SummernoteModelAdmin):
     search_fields = ['content', 'summary']
-    list_filter = ['author', 'date_created']
-    date_hierarchy = 'date_created'
-    ordering = ['date_created']
+    list_filter = ['author', 'created_date']
+    date_hierarchy = 'created_date'
+    ordering = ['created_date']
     # fieldsets = [
     #     ('개요', {'fields': ['title', 'summary']}),
     #     ('내용', {'fields': ['content', 'file']}),
     # ]
-    fields = ['title', 'summary', 'date_created', 'content', 'file']
-    list_display = ('title', 'summary', 'author', 'date_created')
+    fields = ['title', 'summary', 'created_date', 'content', 'file']
+    list_display = ('title', 'summary', 'author', 'created_date')
 
 
 class PortfolioAdmin(SummernoteModelAdmin):

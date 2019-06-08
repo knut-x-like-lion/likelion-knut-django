@@ -4,6 +4,7 @@ from imagekit.processors import ResizeToFill
 from django.contrib.auth.models import User
 from django_summernote import models as summer_model
 from django_summernote import fields as summer_fields
+from django.utils.text import slugify
 
 
 # Create your models here.
@@ -58,15 +59,28 @@ class Notice(models.Model):
     class Meta:
         verbose_name = '공지사항'
         verbose_name_plural = '공지사항'
+        ordering = ('-created_date',)
 
     title = models.CharField(max_length=30, null=False, blank=False, verbose_name='제목')
+    slug = models.SlugField(allow_unicode=True, help_text='주소표시줄에 나타날 문자열')
     summary = models.CharField(max_length=50, null=True, blank=True, verbose_name='요약')
     author = models.CharField(max_length=20, null=False, blank=False, default='운영진', verbose_name='작성자')
-    date_created = models.DateField(auto_now_add=False, verbose_name='작성일')
+    created_date = models.DateField(auto_now_add=False, verbose_name='작성날짜')
+    modified_datetime = models.DateField(auto_now_add=True, verbose_name='수정날짜시각')
     content = models.TextField(max_length=10000, null=True, blank=False, verbose_name='내용')
     file = models.FileField(upload_to='www/files', null=True, blank=True)
 
     # thumbnail = ImageSpecField(source='image', processors=[ResizeToFill(320, 100)], format='JPEG', options={'quality': 90})
+
+    def save(self, raw=False, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.slug = slugify(self.title, allow_unicode=True)
+        super().save(force_insert, force_update, using, update_fields)
+
+    def get_previous_post(self):
+        return self.get_previous_by_created_date()
+
+    def get_next_post(self):
+        return self.get_previous_by_created_date()
 
     def __str__(self):
         return self.title
@@ -113,4 +127,3 @@ class Portfolio(models.Model):
 
     def __str__(self):
         return self.title
-
