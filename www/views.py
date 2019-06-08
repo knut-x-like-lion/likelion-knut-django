@@ -8,7 +8,7 @@ from django.core.mail import EmailMultiAlternatives
 
 import threading
 from .models import *
-from .form import *
+from .forms import *
 
 
 # Create your views here.
